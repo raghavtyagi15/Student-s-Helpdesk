@@ -1,0 +1,327 @@
+/* GENERAL */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+p {
+    color: rgb(85, 85, 85
+    );
+}
+
+/*TRANSITIONS*/
+
+a, .btn {
+    transition: all 300ms ease;
+
+}
+
+/* NAV */
+
+nav, .nav-links {
+    display: flex;
+    background-color: rgb(234, 255, 0);
+    color: white;
+}
+
+nav {
+    justify-content: space-around;
+    align-items: center;
+    height: 17vh;
+}
+
+.nav-links {
+    gap: 2rem;
+    list-style: none;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-decoration-color: white;
+    font-weight: 500;
+
+}
+
+a:hover {
+    color: rgb(48, 3, 3);
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: rgb(0, 0, 0);
+}
+
+.logo {
+    font-size: 2rem;
+    left: 0;
+    color: black;
+    font-weight: 600;
+
+}
+
+.logo:hover {
+    cursor: default;
+    transform: scale(1.1);
+  
+}
+
+
+
+section {
+    padding-top: 4vh;
+    height: 96vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+
+}
+
+.section-container {
+    display: flex;
+}
+
+/* Profile section */
+
+#Home {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    height: 60vh;
+    padding-top: 100px;
+}
+
+.section__pic-container {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    margin: auto o;
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.section__pic-container:hover {
+    transform: scale(1.1);
+
+}
+
+.section__text {
+    align-self: center;
+    text-align: center;
+}
+
+.section__text p {
+    font-weight: 600;
+
+}
+.section__text__p1 {
+    text-align: center;
+}
+
+.section__text__p2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+
+
+/*about*/
+
+#About {
+    padding: 15vh;
+    margin-top: 15rem;
+  }
+  
+.title {
+    color: #333;
+    text-align: center;
+}
+  
+.section-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    text-align: center;
+}
+  
+.about-pic img {
+    width: 450px;
+    margin: auto;
+    margin-top: 2rem;
+    height: 290px;
+    border-radius: 20px;
+    border-color: black;
+    transition: transform 0.3s ease-in-out;
+   
+    
+}
+ 
+.about-pic img:hover {
+    border: 1px solid rgb(234, 255, 0);
+    transform: scale(1.1);
+
+}
+
+.text-container p {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: gray;
+  
+}
+
+#Corner {
+    text-align: center;
+    padding: 7rem;
+  }
+  
+  
+.corner-details-container {
+    display: flex;
+    justify-content: center;
+}
+  
+
+.features-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+  
+.Corner-Sub-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+#article-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    
+    
+}
+  
+article {
+    min-width: 20vw;
+    max-width: 25vw;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid #ddd;
+    padding: 20px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+article:hover {
+    background-color: #ffffff; /* Change the background color on hover */
+    border: 1px solid rgb(234, 255, 0);
+    transform: scale(1.1);
+}
+ 
+.icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#Enrichment {
+    padding-top: 15vh;
+}
+
+h3 {
+    line-height: 1.2;
+    margin: 1rem;
+}
+  
+#contact {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+
+}
+
+.contact-info-upper-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    border-color: rgb(234, 255, 0);
+    background: (250,250,250);
+    margin: 2rem auto;
+    padding: 0.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.contact-info-upper-container:hover {
+    transform: scale(1.1);
+}
+
+
+.contact-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem;
+
+}
+
+.contact-info-container p {
+    font-size: larger;
+}
+
+.contact-icon {
+    cursor: default;
+
+}
+
+.email-icon {
+    height: 4rem;
+    width: 4rem;
+}
+
+/*footer Section */
+
+footer {
+    height: 26vh;
+    margin: 0 1 rem;
+    background-color: black;
+
+}
+
+footer p {
+    text-align: center;
+    padding-top: 1rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+}
+
+
+
+
+
+
