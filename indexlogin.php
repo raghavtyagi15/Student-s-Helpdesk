@@ -1,3 +1,7 @@
+<?php
+        include('sessioncheck.php'); // file with the check_authentication function
+        check_authentication(); // function to check if the user is logged in
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,22 +9,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
     <title>Document</title>
+    
 </head>
 <body>
-    <nav id="desktop-nav">
+
+<nav id="desktop-nav">
         <div class="logo">Student's HelpDesk</div>
         <div>
             <ul class="nav-links">
-                <li><a href="#About">About</a></li>
+                <li><a href="indexlogin.php">Home</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropbtn">Academics</a>
                     <div class="dropdown-content">
-                        <a href="Courses.html">Our Courses</a>
+                        <a href="Courses.php">Our Courses</a>
+                        <a href="timetable.php">Time Table</a>
+                        <a href="announcement.php">Announcements</a>
                     </div>
                 </li>
-                <li><a href="#Corner">Student's Corner</a></li>
-                <li><a href="#Enrichment">Enrichment</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Student's Corner</a>
+                    <div class="dropdown-content">
+                        <a href="medicalapp.php">Medical Application</a>
+                        <a href="ragging.php">Ragging Complaint</a>
+                        <a href="scholarship.php">Scholarship Eligibility</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Enrichment</a>
+                    <div class="dropdown-content">
+                        <a href="societies.php">Societies</a>
+                        <a href="sports.php">Sports Engagement</a>
+                    </div>
+                </li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -119,7 +140,7 @@
             <div class="nav-links-container">
                 <ul class="nav-links">
                     <li><a href="#About">About</a></li>
-                    <li><a href="courses.html">Academics</a></li>
+                    <li><a href="Academics.html">Academics</a></li>
                     <li><a href="#Corner">Student's Corner</a></li>
                     <li><a href="#Enrichment">Enrichment</a></li>
                     <li><a href="#contact">Contact</a></li>

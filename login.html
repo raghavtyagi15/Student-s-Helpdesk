@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    
+    *{
+    margin: 0;
+    padding: 0;
+    }
+
+    body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('./assets/background2.png');
+    
+    }
+    img {
+        opacity: 0.5;
+    }
+
+    html {
+    scroll-behavior: smooth;
+    }
+
+    p {
+    color: rgb(85, 85, 85);
+    }
+
+    nav, .nav-links {
+    display: flex;
+    background-color: rgb(234, 255, 0);
+    color: white;
+    }
+
+    nav {
+    justify-content: space-around;
+    align-items: center;
+    height: 17vh;
+    }
+
+    .nav-links {
+    gap: 2rem;
+    list-style: none;
+    font-size: 1.5rem;
+    align-items: center;
+    vertical-align: middle;
+
+    }
+
+    .nav-links img {
+        vertical-align: middle;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-decoration-color: white;
+    font-weight: 600;
+
+    }
+
+    a:hover {
+    color: rgb(48, 3, 3);
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: rgb(0, 0, 0);
+    }
+
+    .logo {
+    font-size: 2rem;
+    left: 0;
+    color: black;
+    font-weight: 600;
+
+    }
+
+    .logo:hover {
+    cursor: default;
+    transform: scale(1.1);
+  
+    }
+    #Login-Form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    width: 100w;
+    }
+
+    .Login-form-container {
+        padding: 20px;
+        border-radius: 20px;
+        width: 550px; 
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    .login-form-input-container {
+        margin-bottom: 15px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        width: 75%;
+        align-self: center;
+        align-items: center;
+        font-weight: 600;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 20px;
+    }
+
+    .forgot-pass {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+    }
+
+    .btn {
+        background-color: rgb(234, 255, 0);
+        color: #000000;
+        font-weight: 600;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .btn:hover {
+        background-color: #bb2121;
+    }
+
+    .sign-link {
+        margin-top: 15px;
+        text-align: center;
+        color: #555;
+    }
+    </style>
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">Student's HelpDesk</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="Login-Form">
+        <div class="Login-form-container">
+            <h2>Student's Log-In</h2>
+            <div class="login-form-input-container">
+               <form action="authenticate.php" method="post">
+                <input type="text" placeholder="Username"  id="username" name="username" required>
+                <input type="password" placeholder="Password" id="password" name="password" required>
+                <div class="button-container">
+                    <input type="submit"  value="Login" name="btn" id="btn" class="btn">
+                </div>
+               </form> 
+            </div>
+        </div>
+    </section>
+</body>
+</html>
