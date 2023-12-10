@@ -212,11 +212,11 @@ if (!isLoggedIn()) {
         <div class="title-container">
             <h1>Manage Announcements</h1>
             <div class="ann">
-            <?php
+                <?php
                 include "retrieve_announcement.php";
                 if ($result->num_rows > 0) {
                     echo "<table>";
-                    echo "<tr><th>ID</th><th>Title</th><th>Description</th><th>Posting Date</th></tr>";
+                    echo "<tr><th>ID</th><th>Title</th><th>Description</th><th>Posting Date</th><th>Action</th></tr>";
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -224,15 +224,30 @@ if (!isLoggedIn()) {
                         echo "<td>" . $row["Title"] . "</td>";
                         echo "<td>" . $row["Description"] . "</td>";
                         echo "<td>" . $row["Created"] . "</td>";
+                        echo "<td><button onclick='deleteRecord({$row['Id']})'>Delete</button></td></tr>";
                     }
                     echo "</table>";
                 } else {
                     echo "0 results";
                 }
-            ?>
+                ?>
             </div>
         </div>
-
     </section>
+    <script>
+        function deleteRecord(Id) {
+            if (confirm("Are you sure you want to delete this record?")) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // Reload the page or update the table after successful deletion
+                        location.reload();
+                    }
+                };
+                xhr.open("GET", "delete_announcement.php?id=" + Id, true);
+                xhr.send();
+            }
+        }
+    </script>
 </body>
 </html>

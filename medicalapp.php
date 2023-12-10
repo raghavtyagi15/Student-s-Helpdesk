@@ -6,6 +6,8 @@ if (!SLoggedIn()) {
     exit();
 }
 
+$studentName = $_SESSION['Suname'];
+
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +51,11 @@ if (!SLoggedIn()) {
             </ul>
         </div>
     </nav>
+
+    <div class="greeting">
+        <p>Hello, <?php echo $studentName; ?>!</p>
+    </div> 
+    
     <section id="corner-container">
         <div class="corner-title-container">
             <h1>Medical Application</h1>

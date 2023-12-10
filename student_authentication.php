@@ -8,7 +8,7 @@ if(isset($_POST['btn'])){
     $Spassword = mysqli_real_escape_string($conn, $_POST['password']);
 
     if ($Suname != "" && $Spassword != ""){
-        $sql_query = "SELECT count(*) as cntUsers, Id FROM users WHERE username='".$Suname."' AND password='".$Spassword."'";
+        $sql_query = "SELECT count(*) as cntUsers, Id, name FROM users WHERE username='".$Suname."' AND password='".$Spassword."'";
         $result = mysqli_query($conn, $sql_query);
         $row = mysqli_fetch_array($result);
 

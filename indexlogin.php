@@ -6,6 +6,8 @@ if (!SLoggedIn()) {
     exit();
 }
 
+$studentName = $_SESSION['Suname'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +52,9 @@ if (!SLoggedIn()) {
             </ul>
         </div>
     </nav>
+    <div class="greeting">
+        <p>Hello, <?php echo $studentName; ?>!</p>
+    </div>
     <section id="Home">
         <div class="section__pic-container">
             <img src="./assets/HelpDesk.png" alt="Helpdesk System Picture">
@@ -85,7 +90,6 @@ if (!SLoggedIn()) {
                             </div>
                     </article>
                     <article>
-                        <a href="ragging.html">
                         <img src="./assets/Ragging-bully.png" alt="Anti-Ragging" class="icon">
                          <h3> Swift Ragging Complaints</h3>
                         <p>Swiftly address any ragging complaints with our responsive system, prioritizing student well-being and fostering a safe educational environment.</p>

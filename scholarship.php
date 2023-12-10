@@ -6,6 +6,8 @@ if (!SLoggedIn()) {
     exit();
 }
 
+$studentName = $_SESSION['Suname'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -319,6 +321,28 @@ if (!SLoggedIn()) {
         color: rgb(255, 255, 255);
         font-weight: 600;
     }
+    /*User Information*/
+    .greeting {
+        position: fixed;
+        top: 140px; /* Adjust the top distance based on your navigation bar height */
+        right: 10px;
+        background-color: #930000;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 0 0 5px 5px; /* Adjust border-radius for a ribbon effect */
+        font-size: 600;
+        box-shadow: 0px 4px 8px rgba(112, 112, 112, 0.1);
+        transition: background-color 0.3s ease;
+        z-index: 1000; /* Ensure the greeting is above other elements */
+    }
+    .greeting p {
+        font-weight: 600;
+        color: white;
+    }
+
+    .greeting:hover {
+        background-color: rgb(234, 255, 0);
+    }
 
   </style>
 </head>
@@ -355,6 +379,10 @@ if (!SLoggedIn()) {
             </ul>
         </div>
     </nav>
+
+    <div class="greeting">
+        <p>Hello, <?php echo $studentName; ?>!</p>
+    </div>
     <section id="Scholarships">
         <div class="scholarships-title">
             <h1>Our Scholarships</h1>
