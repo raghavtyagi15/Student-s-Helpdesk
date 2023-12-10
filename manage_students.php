@@ -316,7 +316,7 @@ if(isset($_GET['id'])) {
                         echo "<td>" . $row["username"] . "</td>";
                         echo "<td>" . $row["password"] . "</td>";
                         echo "<td>" . $row["Enrol"] . "</td>";
-                        echo "<td> <a href='manage_students.php?id=" . $row["id"] . "' class='btn'>Delete</a> </td>";
+                        echo "<td> <a href='manage_students.php?id=" . $row["id"] . "' class='btn'>Remove</a> </td>";
                         echo "</tr>";
                     }
                     
