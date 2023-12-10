@@ -15,7 +15,8 @@
 
     body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('./assets/background2.png');
+    background-image: url('./assets/student_background.png');
+
     
     }
     img {
@@ -61,7 +62,7 @@
     color: rgb(0, 0, 0);
     text-decoration: none;
     text-decoration-color: white;
-    font-weight: 600;
+    font-weight: 700;
 
     }
 
@@ -86,83 +87,74 @@
   
     }
     #Login-Form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75vh;
-    width: 100w;
-    }
-
-    .Login-form-container {
-        padding: 20px;
-        border-radius: 20px;
-        width: 550px; 
-    }
-
-    h2 {
-        margin-bottom: 20px;
-        color: #333;
-        text-align: center;
-    }
-
-    .login-form-input-container {
-        margin-bottom: 15px;
-    }
-
-    form {
         display: flex;
-        flex-direction: column;
-    }
-
-    input {
-        width: 75%;
-        align-self: center;
+        justify-content: center;
         align-items: center;
-        font-weight: 600;
-        text-align: center;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid rgb(0, 0, 0);
-        border-radius: 20px;
+        height: 75vh;
+        width: 100w;
     }
-
-    .forgot-pass {
-        margin-bottom: 15px;
-        text-align: center;
+    
+    .Login-form-container {
+            padding: 20px;
+            border-radius: 20px;
+            width: 550px; /* Adjust the width as needed */
     }
-
-    a {
-        color: rgb(0, 0, 0);
-        text-decoration: none;
+    
+    h2 {
+            margin-bottom: 20px;
+            color: #000000;
+            text-align: center;
+            font-size: 2rem;
     }
+    
+    .login-form-input-container {
+            margin-bottom: 15px;
+    }
+    
+    form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
+     }
+    
+    input {
+            width: 100%;
+            align-self: center;
+            align-items: center;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: rgb(255, 254, 254);
+            border: 0.2px solid rgb(234, 255, 0);
+            border-radius: 20px;
+    }
+    
     .btn {
-        background-color: rgb(234, 255, 0);
-        color: #000000;
-        font-weight: 600;
-        padding: 10px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        width: 100%;
+            background-color: rgb(234, 255, 0);
+            color: #000000;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 35rem;
     }
-
+    
     .btn:hover {
-        background-color: #bb2121;
-    }
-
-    .sign-link {
-        margin-top: 15px;
-        text-align: center;
-        color: #555;
+            background-color: #ff0000;
+            color: white;
     }
     </style>
 </head>
 <body>
     <nav id="desktop-nav">
-        <div class="logo">Student's HelpDesk</div>
+        <div class="logo">Student's HelpDesk Log-in</div>
         <div>
             <ul class="nav-links">
+                <li><a href="admin_login.html">Admin ?</a></li>
                 <li><a href="index.html">Home</a></li>
             </ul>
         </div>
@@ -171,7 +163,7 @@
         <div class="Login-form-container">
             <h2>Student's Log-In</h2>
             <div class="login-form-input-container">
-               <form action="authenticate.php" method="post">
+               <form action="student_authentication.php" method="post">
                 <input type="text" placeholder="Username"  id="username" name="username" required>
                 <input type="password" placeholder="Password" id="password" name="password" required>
                 <div class="button-container">

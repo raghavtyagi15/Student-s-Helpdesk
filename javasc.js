@@ -20,3 +20,7 @@ function checkEligibility() {
     // Prevent the form from submitting
     return false;
 }
+
+function goToAdminLogin() {
+    window.location.href = 'admin_login.html';
+}

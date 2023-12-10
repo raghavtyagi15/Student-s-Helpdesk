@@ -1,12 +1,14 @@
 <?php
-session_start();
-$host = "localhost"; 
-$user = "root"; 
-$password = ""; 
-$dbname = "helpdesk"; 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "helpdesk";
 
-$con = mysqli_connect($host, $user, $password,$dbname);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
 // Check connection
-if (!$con) {
-  die("Connection failed: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+?>

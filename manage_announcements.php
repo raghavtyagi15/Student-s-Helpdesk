@@ -1,20 +1,21 @@
 <?php
-include "student_function.php"; 
+include "functions.php";
 
-if (!SLoggedIn()) {
-    header("Location: index.html");
+if (!isLoggedIn()) {
+    header("Location: admin_login.html");
     exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Announcements</title>
+    <title>Document</title>
     <style>
+        /* GENERAL */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
         *{
             margin: 0;
             padding: 0;
@@ -22,32 +23,40 @@ if (!SLoggedIn()) {
 
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: rgb(45, 45, 45);
             
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         p {
             color: rgb(85, 85, 85
             );
         }
+
         /*TRANSITIONS*/
+
         a, .btn {
             transition: all 300ms ease;
 
         }
 
         /* NAV */
+
         nav, .nav-links {
             display: flex;
-            background-color: rgb(234, 255, 0);
-            color: white;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
         }
+
         nav {
             justify-content: space-around;
             align-items: center;
             height: 17vh;
         }
+
         .nav-links {
             gap: 2rem;
             list-style: none;
@@ -55,29 +64,38 @@ if (!SLoggedIn()) {
             align-items: center;
             vertical-align: middle;
         }
+
         a {
-            color: rgb(0, 0, 0);
+            color: rgb(234, 255, 0);
             text-decoration: none;
             text-decoration-color: white;
             font-weight: 500;
             font-weight: 600;
+
         }
+
         a:hover {
-            color: rgb(48, 3, 3);
+            color: rgb(255, 255, 255);
             text-decoration: underline;
             text-underline-offset: 1rem;
             text-decoration-color: rgb(255, 255, 255);
         }
+
         .logo {
             font-size: 2rem;
             left: 0;
-            color: black;
+            color: rgb(234, 255, 0);
             font-weight: 600;
+
         }
+
         .logo:hover {
             cursor: default;
-            transform: scale(1.1);      
+            transform: scale(1.1);
+        
         }
+        /*drop down menu*/
+
         .dropdown {
             position: relative;
         }
@@ -87,7 +105,7 @@ if (!SLoggedIn()) {
             position: absolute;
             background-color: rgb(255, 255, 255);
             min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px 0 rgba(216, 216, 25, 0.2);
             z-index: 1;
         }
 
@@ -99,31 +117,24 @@ if (!SLoggedIn()) {
         }
 
         .dropdown-content a {
-            color: black;
+            color: rgb(0, 0, 0);
         }
 
         .dropdown-content a:hover {
-            color: rgb(234, 255, 3);
-        }
+            color: rgb(234, 255, 0);
 
-        #Announcements {
-            padding: 5rem;
-            text-align: center;
-        }
 
-        h1 {
-            font-size: 5rem;
         }
         table {
-            width: 100%;
-            margin-top: 3rem;
+            
             border-collapse: collapse;
+            width: 100%;
         }
 
         th, td {
             padding: 15px;
             text-align: center;
-            border: 1px solid rgb(234, 255, 0);
+            border: 1px solid darkgray;
             font-weight: 600;
         }
 
@@ -133,102 +144,95 @@ if (!SLoggedIn()) {
         }
 
         td {
-            background-color: #ffffff;
+            background-color: black;
+            color: whitesmoke;
         }
-        #ragging-complaints {
-            text-align: center;
-            padding: 3rem;
-        }
-
-
-        .ann-container {
-            margin-top: 30px;
-            background-color: #f2f9ff; /* Light blue background color */
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-        }
-
-        .ann-container a {
-            text-decoration: none;
-            color: #007bff; /* Blue link color */
-            display: block;
+        .data-container {
             
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: 20px 100px;
         }
+        #Announcements {
+            margin: 2rem 4rem;
+            padding: 4rem 1rem;
+        }
+
         h1 {
             font-size: 3rem;
-            margin-top: 4rem;
             text-align: center;
+            margin: 0 auto;
+            color: white;
+            margin-bottom: 2rem;
         }
-        h2 {
-            font-size: 1.5rem;
-            text-align: center;
-            color: rgb(234, 255, 0);
-        }
+
         p {
+            font-size: 1rem;
             font-weight: 500;
             color: gray;
-            margin: 0.5rem auto;
+            text-align: center;
+            margin: 0.5rem 2rem auto;
         }
     </style>
 </head>
 <body>
     <nav id="desktop-nav">
-        <div class="logo">Student's HelpDesk</div>
+        <div class="logo">Admin's Dashboard</div>
         <div>
             <ul class="nav-links">
-                <li><a href="indexlogin.php">Home</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">Academics</a>
+                    <a href="manage_students.php" class="dropbtn">Students</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Complaints</a>
                     <div class="dropdown-content">
-                        <a href="Courses.php">Our Courses</a>
-                        <a href="timetable.php">Time Table</a>
-                        <a href="announcement.php">Announcements</a>
+                        <a href="admin_ragging.php">Ragging</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">Student's Corner</a>
+                    <a href="#" class="dropbtn">Applications</a>
                     <div class="dropdown-content">
-                        <a href="medicalapp.php">Medical Application</a>
-                        <a href="ragging.php">Ragging Complaint</a>
-                        <a href="scholarship.php">Scholarship Eligibility</a>
+                        <a href="admin_sports.php">Sports</a>
+                        <a href="admin_societies.php">Societies</a>
+                        <a href="admin_medical.php">Medical</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">Enrichment</a>
+                    <a href="#" class="dropbtn">Announcements</a>
                     <div class="dropdown-content">
-                        <a href="societies.php">Societies</a>
-                        <a href="sports.php">Sports Engagement</a>
+                        <a href="admin_announcement.php">Add Announcements</a>
+                        <a href="manage_announcements.php">Manage Announcements</a>
                     </div>
                 </li>
-                <li><a href="logout.php">Log-out</a></li>
+                <a href="admin_logout.php" class="dropbtn">Log-out</a>
             </ul>
         </div>
     </nav>
     <section id="Announcements">
-        <div class="announcement-container">
-            <h1>Updates & Notifications</h1>
-            <h2>Via. Student's HelpDesk</h2>
-            <p>Empowering students with instant updates! <br>Our notification feature keeps college students in the loop, delivering timely information to enrich your academic journey effortlessly.</p>
-            <div class="ann-container">
+        <div class="title-container">
+            <h1>Manage Announcements</h1>
+            <div class="ann">
             <?php
                 include "retrieve_announcement.php";
                 if ($result->num_rows > 0) {
+                    echo "<table>";
+                    echo "<tr><th>ID</th><th>Title</th><th>Description</th><th>Posting Date</th></tr>";
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        $announcementID = $row["Id"];
-                        $announcementTitle = $row["Title"];
-                        echo '<marquee> <a href="announcement_details.php?id=' . $announcementID . '">';
-                        echo $announcementTitle;
-                        echo '</a></marquee> <br>'; // Add a line break after each link
+                        echo "<tr>";
+                        echo "<td>" . $row["Id"] . "</td>";
+                        echo "<td>" . $row["Title"] . "</td>";
+                        echo "<td>" . $row["Description"] . "</td>";
+                        echo "<td>" . $row["Created"] . "</td>";
                     }
+                    echo "</table>";
                 } else {
                     echo "0 results";
                 }
             ?>
             </div>
         </div>
+
     </section>
 </body>
 </html>

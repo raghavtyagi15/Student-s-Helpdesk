@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>   
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
+        *{
+        margin: 0;
+        padding: 0;
+        }
+    
+        body {
+        font-family: 'Poppins', sans-serif;
+        background-image: url('./assets/admin_background.png');
+        }
+    
+        html {
+        scroll-behavior: smooth;
+        }
+    
+        p {
+        color: rgb(85, 85, 85);
+        }
+    
+        nav, .nav-links {
+        display: flex;
+        background-color: rgb(28, 28, 28);
+        color: white;
+        }
+    
+        nav {
+        justify-content: space-around;
+        align-items: center;
+        height: 17vh;
+        }
+    
+        .nav-links {
+        gap: 2rem;
+        list-style: none;
+        font-size: 1.5rem;
+        align-items: center;
+        vertical-align: middle;
+    
+        }
+    
+        .nav-links img {
+            vertical-align: middle;
+            width: 2rem;
+            height: 2rem;
+        }
+    
+        a {
+        color: rgb(234, 255, 0);
+        text-decoration: none;
+        text-decoration-color: white;
+        font-weight: 600;
+        font-size: 1.5rem;
+    
+        }
+    
+        a:hover {
+        color: rgb(255, 255, 255);
+        text-decoration: underline;
+        text-underline-offset: 1rem;
+        text-decoration-color: rgb(0, 0, 0);
+        }
+    
+        .logo {
+        font-size: 2rem;
+        left: 0;
+        color: rgb(234, 255, 0);
+        font-weight: 600;
+    
+        }
+    
+        .logo:hover {
+        cursor: default;
+        transform: scale(1.1);
+      
+        }
+        #Login-Form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75vh;
+        width: 100w;
+        }
+    
+        .Login-form-container {
+            padding: 20px;
+            border-radius: 20px;
+            width: 550px; /* Adjust the width as needed */
+        }
+    
+        h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-align: center;
+        }
+    
+        .login-form-input-container {
+            margin-bottom: 15px;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        input {
+            width: 100%;
+            align-self: center;
+            align-items: center;
+            font-weight: 600;
+            text-align: center;
+            color: white ;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: rgb(28, 28, 28);
+            border: 0.2px solid rgb(0, 0, 0);
+            border-radius: 20px;
+        }
+    
+        .btn {
+            background-color: rgb(234, 255, 0);
+            color: #000000;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 35rem;
+        }
+    
+        .btn:hover {
+            background-color: #ff0101;
+            color: white;
+        }
+    
+        </style>
+    </head>
+    <body>
+        <nav id="desktop-nav">
+            <div class="logo">Admin Dashboard Log-in</div>
+            <div>
+                <ul class="nav-links">
+                    <li><a href="login.html">Student ?</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+        <section id="Login-Form">
+            <div class="Login-form-container">
+                <h2>Admin Log-In</h2>
+                <div class="login-form-input-container">
+                   <form action="admin_authntication.php" method="post" autocomplete="off">
+                    <input type="text" placeholder="Username"  id="Ausername" name="Ausername" required>
+                    <input type="password" placeholder="Password" id="Apassword" name="Apassword" required>
+                    <div class="button-container">
+                        <input type="submit"  value="Login" name="btn" id="btn" class="btn">
+                    </div>
+                   </form> 
+                </div>
+            </div>
+        </section>
+    </body>
+    </html>
+    

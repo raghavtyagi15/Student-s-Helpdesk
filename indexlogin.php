@@ -1,6 +1,11 @@
 <?php
-        include('sessioncheck.php'); // file with the check_authentication function
-        check_authentication(); // function to check if the user is logged in
+include "student_function.php"; 
+
+if (!SLoggedIn()) {
+    header("Location: index.html");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +18,7 @@
 </head>
 <body>
 
-<nav id="desktop-nav">
+    <nav id="desktop-nav">
         <div class="logo">Student's HelpDesk</div>
         <div>
             <ul class="nav-links">
@@ -118,8 +123,8 @@
         </div>
     </section>
     <section id="contact">
-        <h1 class="title">Contact Us</h1>
-        <p class="section__text__p1">
+        <h1 class="contact-title">Contact Us</h1>
+        <p class="contact-intro">
             Get in Touch with the Developers
         </p>
         <div class="contact-info-upper-container">
@@ -148,7 +153,7 @@
                 </ul> 
             </div>
         </nav>
-        <p>Copyright &#169 2023 Raghav Tyagi. All Rights Reserved</p>
+        <p>Copyright &#169 2023 Student HelpDesk. All Rights Reserved</p>
     </footer>
 </body>
 </html>

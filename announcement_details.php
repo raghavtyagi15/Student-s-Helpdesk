@@ -12,6 +12,7 @@ if (!SLoggedIn()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <title>Announcements</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
@@ -27,14 +28,21 @@ if (!SLoggedIn()) {
         html {
             scroll-behavior: smooth;
         }
-        p {
-            color: rgb(85, 85, 85
-            );
-        }
+
         /*TRANSITIONS*/
         a, .btn {
             transition: all 300ms ease;
 
+        }
+        h1 {
+            font-size: 3rem;
+            margin-top: 6rem;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.5rem;
+            text-align: center;
+            color: rgb(234, 255, 0);
         }
 
         /* NAV */
@@ -110,66 +118,31 @@ if (!SLoggedIn()) {
             padding: 5rem;
             text-align: center;
         }
-
-        h1 {
-            font-size: 5rem;
-        }
-        table {
-            width: 100%;
-            margin-top: 3rem;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid rgb(234, 255, 0);
-            font-weight: 600;
-        }
-
-        th {
-            background-color: rgb(234, 255, 0);
-            color: rgb(0, 0, 0);
-        }
-
-        td {
-            background-color: #ffffff;
-        }
-        #ragging-complaints {
-            text-align: center;
-            padding: 3rem;
-        }
-
-
-        .ann-container {
-            margin-top: 30px;
-            background-color: #f2f9ff; /* Light blue background color */
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
+        .Announcement_details {
+            border: 2px solid rgb(234, 255, 0);
+            padding: 5rem;
+            margin: 0 auto;
+            width: 65%;
+            margin: 2rem auto;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+            transition: border-color 0.3s ease;
         }
 
-        .ann-container a {
-            text-decoration: none;
-            color: #007bff; /* Blue link color */
-            display: block;
+        .Announcement_details:hover {
             
+            border-color: red;
+            background-color: #FAFAFA;
         }
-        h1 {
-            font-size: 3rem;
-            margin-top: 4rem;
-            text-align: center;
+
+        h3 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
         }
-        h2 {
-            font-size: 1.5rem;
-            text-align: center;
-            color: rgb(234, 255, 0);
-        }
+
         p {
-            font-weight: 500;
-            color: gray;
-            margin: 0.5rem auto;
+            color: #666;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -206,29 +179,39 @@ if (!SLoggedIn()) {
             </ul>
         </div>
     </nav>
-    <section id="Announcements">
-        <div class="announcement-container">
-            <h1>Updates & Notifications</h1>
-            <h2>Via. Student's HelpDesk</h2>
-            <p>Empowering students with instant updates! <br>Our notification feature keeps college students in the loop, delivering timely information to enrich your academic journey effortlessly.</p>
-            <div class="ann-container">
+    <div class="title">
+        <h1>Updates & Notifications</h1>
+        <h2>Via. Student HelpDesk</h2>
+    </div>
+    <div class="Announcement_details">
             <?php
                 include "retrieve_announcement.php";
-                if ($result->num_rows > 0) {
-                    // Output data of each row
-                    while ($row = $result->fetch_assoc()) {
-                        $announcementID = $row["Id"];
+
+                if (isset($_GET['id'])) {
+                    $announcementID = $_GET['id'];
+
+                    // Fetch the details of the selected announcement
+                    $sql = "SELECT * FROM announcements WHERE Id = $announcementID";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
                         $announcementTitle = $row["Title"];
-                        echo '<marquee> <a href="announcement_details.php?id=' . $announcementID . '">';
-                        echo $announcementTitle;
-                        echo '</a></marquee> <br>'; // Add a line break after each link
+                        $announcementDescription = $row["Description"];
+                        $postingDate = $row["Created"];
+
+                        // Display the details
+                        echo "<h3>$announcementTitle</h3>";
+                        echo "<p><strong>Posting Date:</strong> $postingDate</p>";
+                        echo "<p>$announcementDescription</p>";
+                    } else {
+                        echo "Announcement not found.";
                     }
                 } else {
-                    echo "0 results";
+                    echo "Invalid request.";
                 }
-            ?>
-            </div>
-        </div>
-    </section>
+
+                ?>
+    </div>
 </body>
 </html>

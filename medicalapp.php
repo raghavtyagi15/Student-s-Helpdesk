@@ -1,7 +1,13 @@
 <?php
-        include('sessioncheck.php'); // file with the check_authentication function
-        check_authentication(); // function to check if the user is logged in
+include "student_function.php"; 
+
+if (!SLoggedIn()) {
+    header("Location: index.html");
+    exit();
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +21,7 @@
         <div class="logo">Student's HelpDesk</div>
         <div>
             <ul class="nav-links">
-                <li><a href="indexlogin.php'">Home</a></li>
+                <li><a href="indexlogin.php">Home</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropbtn">Academics</a>
                     <div class="dropdown-content">

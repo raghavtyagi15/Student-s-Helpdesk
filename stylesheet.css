@@ -134,12 +134,17 @@ section {
     font-weight: 600;
 
 }
+
+.section__text h1 {
+    font-size: 5rem;
+}
 .section__text__p1 {
     text-align: center;
+    font-size: 2.5rem;
 }
 
 .section__text__p2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -192,7 +197,10 @@ section {
     font-weight: 600;
     color: gray;
   
+
 }
+
+/* CORNER SECTION */
 
 #Corner {
     text-align: center;
@@ -241,7 +249,9 @@ article {
 article:hover {
     background-color: #ffffff; /* Change the background color on hover */
     border: 1px solid rgb(234, 255, 0);
+    border-width: 0.1rem;
     transform: scale(1.1);
+    color: rgb(107, 3, 3);
 }
  
 .icon {
@@ -291,6 +301,17 @@ h3 {
     gap: 0.5rem;
     margin: 1rem;
 
+}
+
+.contact-title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.contact-intro {
+    font-weight: 600;
+    text-align: center;
+    
 }
 
 .contact-info-container p {
@@ -447,4 +468,17 @@ form {
 
 .button-container input[type="submit"]:hover {
     background-color: #FF1C04; 
+}
+/*POP-UP*/
+.fixed-banner {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgb(234, 255, 0);
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(176, 176, 176, 0.3);
+    cursor: pointer;
+    font-weight: 600;
 }
