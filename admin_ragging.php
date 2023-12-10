@@ -6,6 +6,19 @@ if (!isLoggedIn()) {
     exit();
 }
 ?>
+
+<?php
+include "connection.php";
+
+if (isset($_GET['Id'])) {
+    $Id = mysqli_real_escape_string($conn, $_GET['Id']);
+
+    // Update the status in the database
+    $updateStatusQuery = "UPDATE `ragging` SET `status` = 0 WHERE `Id` = '$Id'";
+    $updateStatusResult = mysqli_query($conn, $updateStatusQuery);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,6 +184,18 @@ if (!isLoggedIn()) {
             color: gray;
             text-align: center;
             margin: 0.5rem 2rem auto;
+            margin-bottom: 4rem;
+        }
+        .btn {
+            background: greenyellow;
+            color: white;
+            font-size: 1em;
+            padding: 5px 29px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: darkred;
+            
         }
     </style>
 </head>
@@ -211,15 +236,34 @@ if (!isLoggedIn()) {
     <section id="ragging-complaints">
         <div class="title-container">
             <h1>Ragging Complaints</h1>
+            <p> Address complaints, prioritizing transparency and resolution.</p>
             <div class="data-container">
                 <?php
                 include "retrieve_ragging.php";
                 if ($result->num_rows > 0) {
                     echo "<table>";
-                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Phone</th><th>Course</th><th>Semester</th><th>Description</th><th>IDate</th><th>Submission Date</th></tr>";
+                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Phone</th><th>Course</th><th>Semester</th><th>Description</th><th>Incident Date</th><th>Submission Date</th><th>Action</th></tr>";
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr><td>" . $row["Id"] . "</td><td>" . $row["Fname"] . "</td><td>" . $row["Lname"] . "</td><td>" . $row["Enrol"] . "</td><td>" . $row["Phone"] . "</td><td>" . $row["Course"] . "</td><td>" . $row["Sem"] . "</td><td>" . $row["Description"] . "</td><td>" . $row["Idate"] . "</td><td>" . $row["SubmissionDate"] . "</td></tr>";
+                        echo "<tr>";
+                        echo "<td>" . $row["Id"] . "</td>";
+                        echo "<td>" . $row["Fname"] . "</td>";
+                        echo "<td>" . $row["Lname"] . "</td>";
+                        echo "<td>" . $row["Enrol"] . "</td>";
+                        echo "<td>" . $row["Phone"] . "</td>";
+                        echo "<td>" . $row["Course"] . "</td>";
+                        echo "<td>" . $row["Sem"] . "</td>";
+                        echo "<td>" . $row["Description"] . "</td>";
+                        echo "<td>" . $row["Idate"] . "</td>";
+                        echo "<td>" . $row["SubmissionDate"] . "</td>";
+                        echo "<td>";
+                        if ($row["Status"] == 1) {
+                            echo "<a href='admin_ragging.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
+                        } else {
+                            echo "<span style=' background: darkred; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Addressed</span>";
+                        }
+                        echo "</td>";
+                        echo "</tr>";
                     }
                     echo "</table>";
                 } else {
@@ -228,8 +272,6 @@ if (!isLoggedIn()) {
                 ?>
             </div>
         </div>
-
-        
     </section>
 </body>
-</html>
+</html?

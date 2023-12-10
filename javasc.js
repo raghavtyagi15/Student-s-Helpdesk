@@ -24,3 +24,4 @@ function checkEligibility() {
 function goToAdminLogin() {
     window.location.href = 'admin_login.html';
 }
+

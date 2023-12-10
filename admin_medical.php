@@ -6,6 +6,19 @@ if (!isLoggedIn()) {
     exit();
 }
 ?>
+
+<?php
+include "connection.php";
+
+if (isset($_GET['Id'])) {
+    $Id = mysqli_real_escape_string($conn, $_GET['Id']);
+
+    // Update the status in the database
+    $updateStatusQuery = "UPDATE `medical` SET `status` = 0 WHERE `Id` = '$Id'";
+    $updateStatusResult = mysqli_query($conn, $updateStatusQuery);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,6 +186,17 @@ if (!isLoggedIn()) {
             text-align: center;
             margin: 0.5rem 2rem auto;
         }
+        .btn {
+            background: darkred;
+            color: white;
+            font-size: 1em;
+            padding: 5px 29px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: darkred;
+            
+        }
     </style>
 </head>
 <body>
@@ -217,7 +241,7 @@ if (!isLoggedIn()) {
                 include "retrieve_medical.php";
                 if ($result->num_rows > 0) {
                     echo "<table>";
-                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Reason</th><th>Start Date</th><th>End Date</th><th>Submission Date</th></tr>";
+                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Reason</th><th>Start Date</th><th>End Date</th><th>Submission Date</th><th>Status</th></tr>";
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -231,6 +255,15 @@ if (!isLoggedIn()) {
                         echo "<td>" . $row["Sdate"] . "</td>";
                         echo "<td>" . $row["Edate"] . "</td>";
                         echo "<td>" . $row["SubmissionDate"] . "</td>";
+                        echo "<td>";
+                        if ($row["Status"] == 1) {
+                            echo "<a href='admin_medical.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
+                        } else {
+                            echo "<span style=' background: greenyellow; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Approved</span>";
+                        }
+                        echo "</td>";
+                        echo "</tr>";
+                        
                     }
                     echo "</table>";
                 } else {

@@ -6,6 +6,17 @@ if (!isLoggedIn()) {
     exit();
 }
 ?>
+
+<?php
+include "connection.php";
+if(isset($_GET['Id'])) {
+    $Id=$_GET['Id'];
+    $delete=mysqli_query($conn, "DELETE FROM `announcements` WHERE `Id`='$Id'");
+    header("location:manage_announcements.php");
+    die();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,6 +184,17 @@ if (!isLoggedIn()) {
             text-align: center;
             margin: 0.5rem 2rem auto;
         }
+        .btn {
+            background: darkred;
+            color: white;
+            font-size: 1em;
+            padding: 5px 20px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: greenyellow;
+            
+        }
     </style>
 </head>
 <body>
@@ -224,8 +246,10 @@ if (!isLoggedIn()) {
                         echo "<td>" . $row["Title"] . "</td>";
                         echo "<td>" . $row["Description"] . "</td>";
                         echo "<td>" . $row["Created"] . "</td>";
-                        echo "<td><button onclick='deleteRecord({$row['Id']})'>Delete</button></td></tr>";
+                        echo "<td> <a href='manage_announcements.php?Id=" . $row["Id"] . "' class='btn'>Delete</a> </td>";
+                        echo "</tr>";
                     }
+                    
                     echo "</table>";
                 } else {
                     echo "0 results";
@@ -234,20 +258,5 @@ if (!isLoggedIn()) {
             </div>
         </div>
     </section>
-    <script>
-        function deleteRecord(Id) {
-            if (confirm("Are you sure you want to delete this record?")) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        // Reload the page or update the table after successful deletion
-                        location.reload();
-                    }
-                };
-                xhr.open("GET", "delete_announcement.php?id=" + Id, true);
-                xhr.send();
-            }
-        }
-    </script>
 </body>
 </html>

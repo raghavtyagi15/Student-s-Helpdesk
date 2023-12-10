@@ -72,7 +72,7 @@ $studentName = $_SESSION['Suname'];
                             ?>  
                             <input type="text" placeholder="First Name " name="Fname" required>
                             <input type="text" placeholder="Last Name " name="Lname" required>
-                            <input type="text" placeholder="Enrolment Number" name="Enrol" pattern="[0-9]{10}"required>
+                            <input type="text" placeholder="Enrolment Number" name="Enrol" pattern="[0-9]{11}"required>
                             <input type="text" placeholder="Mobile Number " name="Phone" pattern="[0-9]{10}"required>
                             <input type="text" placeholder="Course " name="Course" required>
                             <input type="number" placeholder="Semester " name="Sem" required>

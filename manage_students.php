@@ -6,6 +6,18 @@ if (!isLoggedIn()) {
     exit();
 }
 ?>
+
+<?php
+include "connection.php";
+if(isset($_GET['id'])) {
+    $id=$_GET['id'];
+    $delete=mysqli_query($conn, "DELETE FROM `users` WHERE `id`='$id'");
+    header("location:manage_students.php");
+    die();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,6 +226,18 @@ if (!isLoggedIn()) {
         .add_s_title p {
             margin-bottom: 3rem;
         }
+    
+        .btn {
+            background: darkred;
+            color: white;
+            font-size: 1em;
+            padding: 5px 20px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: greenyellow;
+            
+        }
     </style>
 </head>
 <body>
@@ -283,7 +307,7 @@ if (!isLoggedIn()) {
                 include "retrieve_students.php";
                 if ($result->num_rows > 0) {
                     echo "<table>";
-                    echo "<tr><th>ID</th><th>Name</th><th>User-name</th><th>Password</th><th>Enrolment Number</th></tr>";
+                    echo "<tr><th>ID</th><th>Name</th><th>User-name</th><th>Password</th><th>Enrolment Number</th><th>Action></th></tr>";
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -292,12 +316,15 @@ if (!isLoggedIn()) {
                         echo "<td>" . $row["username"] . "</td>";
                         echo "<td>" . $row["password"] . "</td>";
                         echo "<td>" . $row["Enrol"] . "</td>";
+                        echo "<td> <a href='manage_students.php?id=" . $row["id"] . "' class='btn'>Delete</a> </td>";
+                        echo "</tr>";
                     }
+                    
                     echo "</table>";
                 } else {
                     echo "0 results";
                 }
-            ?>
+                ?>
         </div>
     </section>
 

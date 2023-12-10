@@ -6,6 +6,20 @@ if (!isLoggedIn()) {
     exit();
 }
 ?>
+
+<?php
+include "connection.php";
+
+if (isset($_GET['Id'])) {
+    $Id = mysqli_real_escape_string($conn, $_GET['Id']);
+
+    // Update the status in the database
+    $updateStatusQuery = "UPDATE `society` SET `status` = 0 WHERE `Id` = '$Id'";
+    $updateStatusResult = mysqli_query($conn, $updateStatusQuery);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,6 +186,17 @@ if (!isLoggedIn()) {
             text-align: center;
             margin: 0.5rem 2rem auto;
         }
+        .btn {
+            background: darkred;
+            color: white;
+            font-size: 1em;
+            padding: 5px 29px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: darkred;
+            
+        }
     </style>
 </head>
 <body>
@@ -215,10 +240,28 @@ if (!isLoggedIn()) {
                 include "retrieve_societies.php";
                 if ($result->num_rows > 0) {
                     echo "<table>";
-                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Prefered Society</th><th>Introduction</th><th>Prefered Audition Date</th><th>Submission Date</th></tr>";
+                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Prefered Society</th><th>Introduction</th><th>Prefered Audition Date</th><th>Submission Date</th><th>Status</th></tr>";
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr><td>" . $row["Id"] . "</td><td>" . $row["Fname"] . "</td><td>" . $row["Lname"] . "</td><td>" . $row["Enrol"] . "</td><td>" . $row["Course"] . "</td><td>" . $row["Sem"] . "</td><td>" . $row["Psociety"] . "</td><td>" . $row["Idescription"] . "</td><td>" . $row["Padate"] . "</td><td>" . $row["SubmissionDate"] . "</td></tr>";
+                        echo "<tr>";
+                        echo "<td>" . $row["Id"] . "</td>";
+                        echo "<td>" . $row["Fname"] . "</td>";
+                        echo "<td>" . $row["Lname"] . "</td>";
+                        echo "<td>" . $row["Enrol"] . "</td>";
+                        echo "<td>" . $row["Course"] . "</td>";
+                        echo "<td>" . $row["Sem"] . "</td>";
+                        echo "<td>" . $row["Psociety"] . "</td>";
+                        echo "<td>" . $row["Idescription"] . "</td>";
+                        echo "<td>" . $row["Padate"] . "</td>";
+                        echo "<td>" . $row["SubmissionDate"] . "</td>";
+                        echo "<td>";
+                        if ($row["Status"] == 1) {
+                            echo "<a href='admin_societies.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
+                        } else {
+                            echo "<span style=' background: greenyellow; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Approved</span>";
+                        }
+                        echo "</td>";
+                        echo "</tr>";
                     }
                     echo "</table>";
                 } else {
