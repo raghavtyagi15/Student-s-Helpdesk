@@ -1,12 +1,10 @@
 <?php
 include "functions.php";
-
 if (!isLoggedIn()) {
     header("Location: admin_login.html");
     exit();
 }
 ?>
-
 <?php
 include "connection.php";
 if(isset($_GET['Id'])) {
@@ -16,7 +14,6 @@ if(isset($_GET['Id'])) {
     die();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -239,7 +236,6 @@ if(isset($_GET['Id'])) {
                 if ($result->num_rows > 0) {
                     echo "<table>";
                     echo "<tr><th>ID</th><th>Title</th><th>Description</th><th>Posting Date</th><th>Action</th></tr>";
-                    // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row["Id"] . "</td>";
@@ -249,7 +245,6 @@ if(isset($_GET['Id'])) {
                         echo "<td> <a href='manage_announcements.php?Id=" . $row["Id"] . "' class='btn'>Delete</a> </td>";
                         echo "</tr>";
                     }
-                    
                     echo "</table>";
                 } else {
                     echo "0 results";

@@ -236,12 +236,9 @@ if (isset($_GET['Id'])) {
             <div class="data-container">
             <?php
             include "retrieve_sports.php";
-
             if ($result->num_rows > 0) {
                 echo "<table>";
                 echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Prefered Sports</th><th>Introduction</th><th>Prefered Trial Date</th><th>Submission Date</th><th>Image</th><th>Action</th></tr>";
-
-                // Output data of each row
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row["Id"] . "</td>";
@@ -255,28 +252,21 @@ if (isset($_GET['Id'])) {
                     echo "<td>" . $row["Tdate"] . "</td>";
                     echo "<td>" . $row["SubmissionDate"] . "</td>";
                     echo "<td>";
-
-                    // Check if Ypicture column has a value
                     if (!empty($row["Ypicture"])) {
-                        // Display the image using the file path stored in Ypicture column
                         echo "<img src='" . $row["Ypicture"] . "' alt='Sports Image' style='max-width: 100px; max-height: 100px;'>";
                     } else {
                         echo "No Image";
                     }
-
                     echo "</td>";
                     echo "<td>";
-                    
                     if ($row["Status"] == 1) {
                         echo "<a href='admin_sports.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
                     } else {
                         echo "<span style='background: greenyellow; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Approved</span>";
                     }
-                    
                     echo "</td>";
                     echo "</tr>";
                 }
-
                 echo "</table>";
             } else {
                 echo "0 results";
