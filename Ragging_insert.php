@@ -19,8 +19,27 @@ if (isset($_POST['send'])) {
     $Sem = $_POST['Sem'];
     $Description = $_POST['Description'];
     $Idate = $_POST['Idate'];
-   
-    $request = "INSERT INTO ragging (Fname, Lname, Enrol, Phone, Course, Sem, Description,Idate) VALUES ('$Fname', '$Lname', '$Enrol','$Phone', '$Course', '$Sem', '$Description', '$Idate')";
+
+    // File upload handling for Proof
+    $proofFileName = $_FILES['Proof']['name'];
+    $proofTmpName = $_FILES['Proof']['tmp_name'];
+    $proofFileSize = $_FILES['Proof']['size'];
+    $proofFileError = $_FILES['Proof']['error'];
+
+    // Check if a file was uploaded without errors
+    if ($proofFileError === 0) {
+        // Move the uploaded file to the "assets" directory
+        $proofDestination = 'assets/' . $proofFileName;
+        move_uploaded_file($proofTmpName, $proofDestination);
+    } else {
+        echo "Proof upload error: " . $proofFileError;
+        exit();
+    }
+
+    // Insert data into the database
+    $request = "INSERT INTO ragging (Fname, Lname, Enrol, Phone, Course, Sem, Description, Idate, Proof) 
+                VALUES ('$Fname', '$Lname', '$Enrol', '$Phone', '$Course', '$Sem', '$Description', '$Idate', '$proofDestination')";
+    
     $result = mysqli_query($con, $request);
 
     if ($result) {
@@ -29,7 +48,7 @@ if (isset($_POST['send'])) {
         ob_end_flush();
         exit();
     } else {
-        echo "try again";
+        echo "Database insert error: " . mysqli_error($con);
     }
 } else {
     echo 'Something went wrong, try again';

@@ -300,26 +300,24 @@ $studentName = $_SESSION['Suname'];
         /*User Information*/
         .greeting {
             position: fixed;
-            top: 140px; /* Adjust the top distance based on your navigation bar height */
+            top: 140px; 
             right: 10px;
             background-color: #930000;
             color: rgb(255, 255, 255);
             padding: 10px;
-            border-radius: 0 0 5px 5px; /* Adjust border-radius for a ribbon effect */
+            border-radius: 0 0 5px 5px;
             font-size: 600;
             box-shadow: 0px 4px 8px rgba(112, 112, 112, 0.1);
             transition: background-color 0.3s ease;
-            z-index: 1000; /* Ensure the greeting is above other elements */
+            z-index: 1000;
         }
         .greeting p {
             font-weight: 600;
             color: white;
         }
-
         .greeting:hover {
             background-color: rgb(234, 255, 0);
         }
-
     </style>
 </head>
 <body>
@@ -401,7 +399,7 @@ $studentName = $_SESSION['Suname'];
                             if (isset($_GET['message']) && $_GET['message'] === 'success') {
                                 echo '<p style="color: green; margin-left:4rem; margin-bottom: 2rem; font-weight:600; text-align:center; ">Your request has been submitted successfully!</p>';
                             }
-                            ?>   
+                            ?>
                             <input type="text" placeholder="First Name " name="Fname" required>
                             <input type="text" placeholder="Last Name " name="Lname" required>
                             <input type="text" placeholder="Enrolment Number " name="Enrol" pattern="[0-9]{10}"required>
@@ -414,7 +412,7 @@ $studentName = $_SESSION['Suname'];
                             <label for="date">Prefered Audition Dates:</label>
                             <input type="date" id="Padate" name="Padate">
                             <label for="Proof" class="custom-file-input">Upload your Picture / Portfolio :</label>
-                            <input type="file" id="Portfolio" name="Portfolio" accept="image/*">
+                            <input type="file" id="Portfolio" name="Portfolio" accept="application/pd*">
                             <div class="button-container">
                                  <input type="submit" value="Submit" class="btn" name="send">
                             </div>      

@@ -20,17 +20,36 @@ if (isset($_POST['send'])) {
     $Psports = $_POST['Psports'];
     $Intro = $_POST['Intro'];
     $Tdate = $_POST['date'];
-   
-    $request = "INSERT INTO sports (Fname, Lname, Enrol, Course, Sem, Psports, Intro, Tdate) VALUES ('$Fname', '$Lname', '$Enrol','$Course', '$Sem', '$Psports', '$Intro', '$Tdate')";
-    $result = mysqli_query($con, $request);
 
-    if ($result) {
-        ob_start();
-        header('Location: sports.php?message=success');
-        ob_end_flush();
-        exit();
+    // File upload handling for Ypicture (Image)
+    $ypictureFileName = $_FILES['Ypicture']['name'];
+    $ypictureTmpName = $_FILES['Ypicture']['tmp_name'];
+    $ypictureFileSize = $_FILES['Ypicture']['size'];
+    $ypictureFileError = $_FILES['Ypicture']['error'];
+
+    // Check if a file was uploaded without errors
+    if ($ypictureFileError === 0) {
+        // Move the uploaded file to the "uploads" directory
+        $ypictureDestination = 'assets/' . $ypictureFileName;
+        move_uploaded_file($ypictureTmpName, $ypictureDestination);
+
+        // Insert data into the database
+        $request = "INSERT INTO sports (Fname, Lname, Enrol, Course, Sem, Psports, Intro, Tdate, Ypicture) 
+                    VALUES ('$Fname', '$Lname', '$Enrol', '$Course', '$Sem', '$Psports', '$Intro', '$Tdate', '$ypictureDestination')";
+
+        $result = mysqli_query($con, $request);
+
+        if ($result) {
+            ob_start();
+            header('Location: sports.php?message=success');
+            ob_end_flush();
+            exit();
+        } else {
+            echo "Database insert error: " . mysqli_error($con);
+        }
     } else {
-        echo "try again";
+        header('Location: sports.php?message=tryagain');
+        exit();
     }
 } else {
     echo 'Something went wrong, try again';

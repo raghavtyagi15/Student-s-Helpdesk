@@ -236,38 +236,54 @@ if (isset($_GET['Id'])) {
         <div class="title-container">
             <h1>Society Participation Applications</h1>
             <div class="data-container">
-                <?php
-                include "retrieve_societies.php";
-                if ($result->num_rows > 0) {
-                    echo "<table>";
-                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Prefered Society</th><th>Introduction</th><th>Prefered Audition Date</th><th>Submission Date</th><th>Status</th></tr>";
-                    // Output data of each row
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row["Id"] . "</td>";
-                        echo "<td>" . $row["Fname"] . "</td>";
-                        echo "<td>" . $row["Lname"] . "</td>";
-                        echo "<td>" . $row["Enrol"] . "</td>";
-                        echo "<td>" . $row["Course"] . "</td>";
-                        echo "<td>" . $row["Sem"] . "</td>";
-                        echo "<td>" . $row["Psociety"] . "</td>";
-                        echo "<td>" . $row["Idescription"] . "</td>";
-                        echo "<td>" . $row["Padate"] . "</td>";
-                        echo "<td>" . $row["SubmissionDate"] . "</td>";
-                        echo "<td>";
-                        if ($row["Status"] == 1) {
-                            echo "<a href='admin_societies.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
-                        } else {
-                            echo "<span style=' background: greenyellow; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Approved</span>";
-                        }
-                        echo "</td>";
-                        echo "</tr>";
+            <?php
+            include "retrieve_societies.php";
+
+            if ($result->num_rows > 0) {
+                echo "<table>";
+                echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Preferred Society</th><th>Introduction</th><th>Preferred Audition Date</th><th>Submission Date</th><th>Portfolio Link</th><th>Status</th></tr>";
+
+                // Output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["Id"] . "</td>";
+                    echo "<td>" . $row["Fname"] . "</td>";
+                    echo "<td>" . $row["Lname"] . "</td>";
+                    echo "<td>" . $row["Enrol"] . "</td>";
+                    echo "<td>" . $row["Course"] . "</td>";
+                    echo "<td>" . $row["Sem"] . "</td>";
+                    echo "<td>" . $row["Psociety"] . "</td>";
+                    echo "<td>" . $row["Idescription"] . "</td>";
+                    echo "<td>" . $row["Padate"] . "</td>";
+                    echo "<td>" . $row["SubmissionDate"] . "</td>";
+                    echo "<td>";
+
+                    // Display link to the portfolio if available
+                    if (!empty($row["Portfolio"])) {
+                        echo "<a href='" . $row["Portfolio"] . "' target='_blank'>View Portfolio</a>";
+                    } else {
+                        echo "No Portfolio";
                     }
-                    echo "</table>";
-                } else {
-                    echo "0 results";
+
+                    echo "</td>";
+                    echo "<td>";
+
+                    // Display status button or approved span
+                    if ($row["Status"] == 1) {
+                        echo "<a href='admin_societies.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
+                    } else {
+                        echo "<span style='background: greenyellow; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Approved</span>";
+                    }
+
+                    echo "</td>";
+                    echo "</tr>";
                 }
-                ?>
+
+                echo "</table>";
+            } else {
+                echo "0 results";
+            }
+            ?>
             </div>
         </div>
 

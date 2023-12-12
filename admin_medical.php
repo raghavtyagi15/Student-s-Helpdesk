@@ -237,11 +237,13 @@ if (isset($_GET['Id'])) {
         <div class="title-container">
             <h1>Medical Applications</h1>
             <div class="data-container">
-                <?php
+            <?php
                 include "retrieve_medical.php";
+
                 if ($result->num_rows > 0) {
                     echo "<table>";
-                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Reason</th><th>Start Date</th><th>End Date</th><th>Submission Date</th><th>Status</th></tr>";
+                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Course</th><th>Semester</th><th>Reason</th><th>Start Date</th><th>End Date</th><th>Submission Date</th><th>Certificate</th><th>Status</th></tr>";
+
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -256,18 +258,33 @@ if (isset($_GET['Id'])) {
                         echo "<td>" . $row["Edate"] . "</td>";
                         echo "<td>" . $row["SubmissionDate"] . "</td>";
                         echo "<td>";
+
+                        // Display link to the image if available
+                        if (!empty($row["Certificate"])) {
+                            echo "<a href='" . $row["Certificate"] . "' target='_blank'>View</a>";
+                        } else {
+                            echo "No Image";
+                        }
+
+                        echo "</td>";
+                        echo "<td>";
+
+                        // Display status button or approved span
                         if ($row["Status"] == 1) {
                             echo "<a href='admin_medical.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
                         } else {
-                            echo "<span style=' background: greenyellow; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Approved</span>";
+                            echo "<span style='background: greenyellow; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Approved</span>";
                         }
+
                         echo "</td>";
                         echo "</tr>";
-                        
                     }
+
                     echo "</table>";
                 } else {
-                    echo "0 results";
+                    echo "<div style='text-align: center; margin-top: 50px;'>";
+                    echo "<p>No Applications - 0 Results</p>";
+                    echo "</div>";
                 }
                 ?>
             </div>

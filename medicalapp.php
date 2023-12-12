@@ -73,7 +73,7 @@ $studentName = $_SESSION['Suname'];
                             ?>  
                             <input type="text" placeholder="First Name " name="Fname" required>
                             <input type="text" placeholder="Last Name " name="Lname" required>
-                            <input type="text" placeholder="Enrolment Number " name="Enrol" pattern="[0-9]{10}"required>
+                            <input type="text" placeholder="Enrolment Number " name="Enrol" pattern="[0-9]{11}"required>
                             <input type="text" placeholder="Course " name="Course" required>
                             <input type="number" placeholder="Semester " name="Sem" required>
                             <textarea name="Reason" rows="5" cols="5">Reason for Medical Leave Application</textarea>
@@ -81,7 +81,7 @@ $studentName = $_SESSION['Suname'];
                             <input type="date" id="start" name="Sdate">
                             <label for="birthday">Ending Date :</label>
                             <input type="date" id="end" name="Edate">
-                            <label for="certificate-image" class="custom-file-input">Upload Medical Certificate :</label>
+                            <label for="certificate-image" class="custom-file-input">Upload Medical Certificate (pdf only) :</label>
                             <input type="file" id="certificate-image" name="Certificate" accept="image/*">
                             <div class="button-container">
                                  <input type="submit" value="Submit" class="btn" name="send">

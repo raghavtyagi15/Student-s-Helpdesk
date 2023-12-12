@@ -20,7 +20,33 @@ if (isset($_POST['send'])) {
     $Sdate = $_POST['Sdate'];
     $Edate = $_POST['Edate'];
 
-    $request = "INSERT INTO medical (Fname, Lname, Enrol, Course, Sem, Reason, Sdate, Edate) VALUES ('$Fname', '$Lname', '$Enrol', '$Course', '$Sem', '$Reason', '$Sdate', '$Edate')";
+
+    $certificateFileName = $_FILES['Certificate']['name'];
+    $certificateTmpName = $_FILES['Certificate']['tmp_name'];
+    $certificateFileSize = $_FILES['Certificate']['size'];
+    $certificateFileError = $_FILES['Certificate']['error'];
+
+
+    if ($certificateFileError === 0) {
+        $allowedFileTypes = ['application/pdf'];
+        $fileType = mime_content_type($certificateTmpName);
+
+        if (!in_array($fileType, $allowedFileTypes)) {
+            echo "Invalid file type. Only PDF files are allowed.";
+            exit();
+        }
+
+ 
+        $certificateDestination = 'assets/' . $certificateFileName;
+        move_uploaded_file($certificateTmpName, $certificateDestination);
+    } else {
+        echo "File upload error: " . $certificateFileError;
+        exit();
+    }
+
+    $request = "INSERT INTO medical (Fname, Lname, Enrol, Course, Sem, Reason, Sdate, Edate, Certificate) 
+                VALUES ('$Fname', '$Lname', '$Enrol', '$Course', '$Sem', '$Reason', '$Sdate', '$Edate', '$certificateDestination')";
+
     $result = mysqli_query($con, $request);
 
     if ($result) {
@@ -29,12 +55,11 @@ if (isset($_POST['send'])) {
         ob_end_flush();
         exit();
     } else {
-        echo "try again";
+        echo "Database insert error: " . mysqli_error($con);
     }
 } else {
     echo 'Something went wrong, try again';
 }
 
-// Close the connection
 mysqli_close($con);
 ?>

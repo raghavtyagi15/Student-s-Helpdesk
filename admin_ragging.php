@@ -139,9 +139,9 @@ if (isset($_GET['Id'])) {
 
         }
         table {
-            
-            border-collapse: collapse;
-            width: 100%;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0 auto; /* Add this line to center the table horizontally */
         }
 
         th, td {
@@ -238,38 +238,54 @@ if (isset($_GET['Id'])) {
             <h1>Ragging Complaints</h1>
             <p> Address complaints, prioritizing transparency and resolution.</p>
             <div class="data-container">
-                <?php
-                include "retrieve_ragging.php";
-                if ($result->num_rows > 0) {
-                    echo "<table>";
-                    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Phone</th><th>Course</th><th>Semester</th><th>Description</th><th>Incident Date</th><th>Submission Date</th><th>Action</th></tr>";
-                    // Output data of each row
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row["Id"] . "</td>";
-                        echo "<td>" . $row["Fname"] . "</td>";
-                        echo "<td>" . $row["Lname"] . "</td>";
-                        echo "<td>" . $row["Enrol"] . "</td>";
-                        echo "<td>" . $row["Phone"] . "</td>";
-                        echo "<td>" . $row["Course"] . "</td>";
-                        echo "<td>" . $row["Sem"] . "</td>";
-                        echo "<td>" . $row["Description"] . "</td>";
-                        echo "<td>" . $row["Idate"] . "</td>";
-                        echo "<td>" . $row["SubmissionDate"] . "</td>";
-                        echo "<td>";
-                        if ($row["Status"] == 1) {
-                            echo "<a href='admin_ragging.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
-                        } else {
-                            echo "<span style=' background: darkred; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Addressed</span>";
-                        }
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    echo "0 results";
-                }
-                ?>
+            <?php
+include "retrieve_ragging.php";
+
+if ($result->num_rows > 0) {
+    echo "<table>";
+    echo "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Enrolment Number</th><th>Phone</th><th>Course</th><th>Semester</th><th>Description</th><th>Incident Date</th><th>Submission Date</th><th>Proof Image</th><th>Action</th></tr>";
+
+    // Output data of each row
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row["Id"] . "</td>";
+        echo "<td>" . $row["Fname"] . "</td>";
+        echo "<td>" . $row["Lname"] . "</td>";
+        echo "<td>" . $row["Enrol"] . "</td>";
+        echo "<td>" . $row["Phone"] . "</td>";
+        echo "<td>" . $row["Course"] . "</td>";
+        echo "<td>" . $row["Sem"] . "</td>";
+        echo "<td>" . $row["Description"] . "</td>";
+        echo "<td>" . $row["Idate"] . "</td>";
+        echo "<td>" . $row["SubmissionDate"] . "</td>";
+        echo "<td>";
+        
+        // Display proof image if available
+        if (!empty($row["Proof"])) {
+            echo "<a href='" . $row["Proof"] . "' target='_blank'>View Proof</a>";
+        } else {
+            echo "No Image";
+        }
+
+        echo "</td>";
+        echo "<td>";
+
+        // Display status button or addressed span
+        if ($row["Status"] == 1) {
+            echo "<a href='admin_ragging.php?Id=" . $row["Id"] . "' class='btn'>Pending</a>";
+        } else {
+            echo "<span style='background: darkred; color: white; font-size: 1em; padding: 5px 20px; text-decoration: none;'>Addressed</span>";
+        }
+
+        echo "</td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+?>
             </div>
         </div>
     </section>

@@ -76,7 +76,7 @@ section {
     display: flex;
 }
 
-/* PROFILE SECTION*/
+/*PROFILE SECTION*/
 #Home {
     display: flex;
     justify-content: center;
@@ -155,7 +155,7 @@ section {
     color: gray;
 }
 
-/* CORNER SECTION */
+/*CORNER SECTION*/
 #Corner {
     text-align: center;
     padding: 3rem;
@@ -222,7 +222,7 @@ h3 {
     margin: 1rem;
 }
 
-/*CONTACT*/
+/*CONTACT SECTION*/
 #contact {
     display: flex;
     justify-content: center;
@@ -283,7 +283,7 @@ footer p {
     font-weight: 600;
 }
 
-/*drop down menu*/
+/*DROP-DOWN MENU*/
 .dropdown {
     position: relative;
 }
@@ -405,19 +405,19 @@ form {
     font-weight: 600;
 }
 
-/*User Information*/
+/*USER INFORMATION RIBBON*/
 .greeting {
     position: fixed;
-    top: 140px; /* Adjust the top distance based on your navigation bar height */
+    top: 140px; 
     right: 10px;
     background-color: #930000;
     color: rgb(255, 255, 255);
     padding: 10px;
-    border-radius: 0 0 5px 5px; /* Adjust border-radius for a ribbon effect */
+    border-radius: 0 0 5px 5px; 
     font-size: 600;
     box-shadow: 0px 4px 8px rgba(112, 112, 112, 0.1);
     transition: background-color 0.3s ease;
-    z-index: 1000; /* Ensure the greeting is above other elements */
+    z-index: 1000; 
 }
 .greeting p {
     font-weight: 600;
