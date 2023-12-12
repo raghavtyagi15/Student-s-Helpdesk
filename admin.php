@@ -6,6 +6,9 @@ if (!isLoggedIn()) {
     exit();
 }
 ?>
+<?php
+include "count.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,7 +133,8 @@ if (!isLoggedIn()) {
             justify-content: center;
             gap: 5rem;
             height: 60vh;
-            padding-top: 75px;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
         
         }
 
@@ -160,12 +164,12 @@ if (!isLoggedIn()) {
         }
 
         .section__text h1 {
-            font-size: 5rem;
+            font-size: 4rem;
             color: white;
         }
         .section__text__p1 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: lightcyan;
         }
 
@@ -176,12 +180,125 @@ if (!isLoggedIn()) {
         }
 
         .title {
-            font-size: 3rem;
+            font-size: 2rem;
             text-align: center;
         }
+        
+        /*DASHBOARD-ARTICLES*/
+        #Dashboard-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 4rem;
+            padding: 3rem 3rem;
+            gap: 2rem;
+            margin-bottom: 10rem;
+        }
 
-        /*FOOTER*/
+        article {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px;
+            transition: transform 0.3s ease-in-out;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(234, 255, 0, 0.1); /* Adjust the alpha value for transparency */
+        }
 
+        article:hover {
+            transform: scale(1.05);
+        }
+
+        article img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 15%;
+            margin-bottom: 15px;
+            filter: invert(0) contrast(200%);
+        }
+
+        /* Unique colors for each box */
+        article:nth-child(1) { background-color: rgba(234, 255, 0, 0); border: 2px solid rgb(255, 0, 0) }
+        article:nth-child(2) { background-color: rgba(234, 255, 0, 0); border: 2px solid rgb(0, 255, 0) }
+        article:nth-child(3) { background-color: rgba(234, 255, 0, 0); border: 2px solid rgb(0, 0, 255)}
+        article:nth-child(4) { background-color: rgba(234, 255, 0, 0); border: 2px solid rgb(255, 219, 88)}
+
+        p {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+        }
+        #contact {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 60vh;
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+        }
+        .contact-info-upper-container {
+            display: flex;
+            width: 48rem;
+            height: 5rem;
+            justify-content: center;
+            border-radius: 2rem;
+            border: rgb(53, 53, 53) 0.1rem solid;
+            border-color: rgb(234, 255, 0);
+            background: (250,250,250);
+            margin: 2rem auto;
+            padding: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+        .contact-info-upper-container:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+        .contact-info-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem;
+        }
+        .contact-title {
+            font-size: 3rem;
+            text-align: center;
+            color: white;
+        }
+        .contact-intro {
+            font-weight: 600;
+            text-align: center;
+            color: gray;
+        }
+        .contact-info-container p {
+            font-size: larger;
+
+        }
+        .contact-icon {
+            cursor: default;
+            height: 3.3rem;
+            width: 3.3rem;
+        }
+        .email-icon {
+            height: 4rem;
+            width: 4rem;
+        }
+
+        /*FOOTER SECTION*/
+        footer {
+            height: 26vh;
+            margin: 0 1 rem;
+            background-color: black;
+        }
+        footer p {
+            text-align: center;
+            background-color: rgb(234, 255, 0);
+            font-weight: 600;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -227,5 +344,55 @@ if (!isLoggedIn()) {
             <p class="section__text__p2">At your Help anytime!</p>
         </div>
     </section>
+    <div>
+        <h1 class="contact-title">Student's Engagement Hub</h1>
+        <p class="contact-intro">Admin's Student Engagement Hub, a centralized control center where you can oversee and <br>manage student applications, feedback, registrations, and announcements.</p>
+        </div>
+    <section id="Dashboard-container">
+        
+        <article>
+            <img src="./assets/student.png" alt="">
+            <p>Students : <?php echo $rowStudents['studentCount']; ?></p>
+        </article>
+        <article>
+            <img src="./assets/application.png" alt="">
+            <p>Applications : <?php echo ($rowApplications['applicationCount'] ?? 0); ?></p>
+        </article>
+        <article>
+            <img src="./assets/announcement.png" alt="">
+            <p>Announcements : <?php echo $rowAnnouncements['announcementCount']; ?></p>
+        </article>
+        <article>
+            <img src="./assets/complaint.png" alt="">
+            <p>Complaints : <?php echo $rowComplaints['complaintCount']; ?></p>
+        </article>
+    </section>
+    <section id="contact">
+        <h1 class="contact-title" >Contact Us</h1>
+        <p class="contact-intro">
+            Get in Touch with the Developers
+        </p>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="email icon" class="icon contact-icon email-icon"/>
+                <p><a href="mailto:abc.com">Thestudenthelpdeskdev@gmail.com</a></p>
+
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="linkedin icon" class="icon contact-icon"/>
+                <p><a href="https://www.linkedin.com">Devlopers</a></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#">Admin's Dashboard</a></li>
+                </ul> 
+            </div>
+        </nav>
+        <p>Copyright &#169 2023 Student HelpDesk. All Rights Reserved</p>
+    </footer>
 </body>
 </html>

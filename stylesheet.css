@@ -1,50 +1,37 @@
 /* GENERAL */
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
-
 *{
     margin: 0;
     padding: 0;
 }
-
 body {
     font-family: 'Poppins', sans-serif;
-    
-    
+    background-color: rgb(255, 255, 255);
 }
-
 html {
     scroll-behavior: smooth;
 }
-
 p {
     color: rgb(85, 85, 85
     );
 }
 
 /*TRANSITIONS*/
-
 a, .btn {
     transition: all 300ms ease;
-
 }
 
-/* NAV */
-
+/*NAV*/
 nav, .nav-links {
     display: flex;
     background-color: rgb(234, 255, 0);
     color: white;
 }
-
 nav {
     justify-content: space-around;
     align-items: center;
     height: 17vh;
 }
-
 .nav-links {
     gap: 2rem;
     list-style: none;
@@ -52,39 +39,29 @@ nav {
     align-items: center;
     vertical-align: middle;
 }
-
-
-
 a {
     color: rgb(0, 0, 0);
     text-decoration: none;
     text-decoration-color: white;
     font-weight: 500;
     font-weight: 600;
-
 }
-
 a:hover {
     color: rgb(48, 3, 3);
     text-decoration: underline;
     text-underline-offset: 1rem;
     text-decoration-color: rgb(255, 255, 255);
 }
-
 .logo {
     font-size: 2rem;
     left: 0;
     color: black;
     font-weight: 600;
-
 }
-
 .logo:hover {
     cursor: default;
     transform: scale(1.1);
-  
 }
-
 
 /*SECTION*/
 section {
@@ -95,46 +72,35 @@ section {
     min-height: fit-content;
 
 }
-
 .section-container {
     display: flex;
 }
 
 /* PROFILE SECTION*/
-
 #Home {
     display: flex;
     justify-content: center;
     gap: 5rem;
     height: 60vh;
-    padding-top: 100px;
-   
+    padding-top: 100px; 
 }
-
 .section__pic-container {
     display: flex;
     height: 400px;
     width: 400px;
     margin: auto o;
     transition: transform 0.3s ease-in-out;
-    
 }
-
 .section__pic-container:hover {
     transform: scale(1.1);
-
 }
-
 .section__text {
     align-self: center;
     text-align: center;
 }
-
 .section__text p {
     font-weight: 600;
-
 }
-
 .section__text h1 {
     font-size: 5rem;
 }
@@ -142,29 +108,24 @@ section {
     text-align: center;
     font-size: 2.5rem;
 }
-
 .section__text__p2 {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
-
 .title {
     font-size: 3rem;
     text-align: center;
 }
 
 /*ABOUT SECTION*/
-
 #About {
     padding: 15vh;
     margin-top: 15rem;
   }
-  
 .title {
     color: #333;
     text-align: center;
 }
-  
 .section-container {
     display: flex;
     justify-content: space-between;
@@ -172,7 +133,6 @@ section {
     margin-top: 20px;
     text-align: center;
 }
-  
 .about-pic img {
     width: 450px;
     margin: auto;
@@ -180,15 +140,12 @@ section {
     height: 290px;
     border-radius: 20px;
     border-color: black;
-    transition: transform 0.3s ease-in-out;
-   
-    
+    transition: transform 0.3s ease-in-out; 
 }
  
 .about-pic img:hover {
     border: 1px solid rgb(234, 255, 0);
     transform: scale(1.1);
-
 }
 
 .text-container p {
@@ -196,41 +153,32 @@ section {
     line-height: 1.5;
     font-weight: 600;
     color: gray;
-  
-
 }
 
 /* CORNER SECTION */
-
 #Corner {
     text-align: center;
     padding: 3rem;
   }
-  
-  
 .corner-details-container {
     display: flex;
     justify-content: center;
 }
-
 .features-container {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 3rem;
 }
-  
 .Corner-Sub-title {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
 }
-  
 .icon {
     width: 50px;
     height: 50px;
     margin-right: 10px;
 }
-  
 article {
     min-width: 15vw;
     max-width: 15vw;
@@ -239,27 +187,32 @@ article {
     margin-bottom: 20px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
-    border: 2px solid #ddd;
+    border: 2px solid #acacac;
     padding: 5rem;
     margin-top: 1.5rem;
     border-radius: 20px;
     font-weight: 500;
 }
-
 article:hover {
-    background-color: #ffffff; /* Change the background color on hover */
+    background-color: rgb(255, 255, 255);
     border: 1px solid rgb(234, 255, 0);
     border-width: 0.1rem;
     transform: scale(1.1);
-    color: rgb(107, 3, 3);
+    color: rgb(186, 8, 8);
+    font-weight: bolder;
+   
 }
- 
+.icon:hover {
+    filter: invert(1);
+}
 .icon {
     width: 50px;
     height: 50px;
     margin-right: 10px;
+    filter: invert(0);
+    transition: filter 0.3s ease-in-out;
+    
 }
-
 #Enrichment {
     padding-top: 3.5rem;
 }
@@ -268,7 +221,8 @@ h3 {
     line-height: 1.2;
     margin: 1rem;
 }
-  
+
+/*CONTACT*/
 #contact {
     display: flex;
     justify-content: center;
@@ -276,7 +230,6 @@ h3 {
     height: 70vh;
 
 }
-
 .contact-info-upper-container {
     display: flex;
     justify-content: center;
@@ -288,55 +241,41 @@ h3 {
     padding: 0.5rem;
     transition: transform 0.3s ease-in-out;
 }
-
 .contact-info-upper-container:hover {
     transform: scale(1.1);
 }
-
-
 .contact-info-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     margin: 1rem;
-
 }
-
 .contact-title {
     font-size: 3rem;
     text-align: center;
 }
-
 .contact-intro {
     font-weight: 600;
     text-align: center;
-    
 }
-
 .contact-info-container p {
     font-size: larger;
 }
-
 .contact-icon {
     cursor: default;
-
 }
-
 .email-icon {
     height: 4rem;
     width: 4rem;
 }
 
 /*FOOTER SECTION*/
-
 footer {
     height: 26vh;
     margin: 0 1 rem;
     background-color: black;
-
 }
-
 footer p {
     text-align: center;
     padding-top: 1rem;
@@ -344,13 +283,10 @@ footer p {
     font-weight: 600;
 }
 
-
 /*drop down menu*/
-
 .dropdown {
     position: relative;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -359,23 +295,19 @@ footer p {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
 }
-
 .dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
 }
-
 .dropdown-content a {
     color: rgb(0, 0, 0);
 }
-
 .dropdown-content a:hover {
     color: rgb(234, 255, 0);
-
-
 }
+
 /*MEDICAL APPLICATION*/
 #corner-container {
     padding: 5rem;
@@ -383,14 +315,12 @@ footer p {
     background-color: #ffffff; 
     text-align: left;
 }
-
 .corner-title-container h1 {
     color: #000000; 
     font-size: 2.5rem;
     margin-bottom: 0.2rem;
     text-align: center;
 }
-
 .corner-subtitle-container h2 {
     color: rgb(234, 255, 0); 
     font-size: 1.5rem;
@@ -398,7 +328,6 @@ footer p {
     margin-bottom: 0.5rem;
     text-align: center;
 }
-
 .corner-text-container p {
     color: #555; 
     margin-bottom: 2rem;
@@ -407,7 +336,6 @@ footer p {
 form {
     padding-bottom: 4rem;
 }
-
 .form-container textarea {
     width: 100%;
     padding: 10px;
@@ -418,13 +346,11 @@ form {
     border: 1px solid #ddd; 
     border-radius: 5px;
 }
-
 .form-container label {
     color: #333; 
     display: block;
     margin-bottom: 5px;
 }
-
 .form-container input[type="text"],
 .form-container input[type="number"],
 .form-container input[type="date"],
@@ -438,22 +364,18 @@ form {
     border: 1px solid #ddd; 
     border-radius: 5px;
 }
-
 .form-container input[type="checkbox"] {
     margin-right: 5px;
     transform: scale(1.3); 
-  }
-  
-  .form-container input[type="checkbox"]:hover {
+}
+.form-container input[type="checkbox"]:hover {
 
     filter: brightness(1.5); 
     cursor: pointer; 
-  }
-
+}
 .form-container input[type="file"] {
     border: none; 
 }
-
 .button-container input[type="submit"] {
     background-color: rgb(234, 255, 0);
     color: #000;
@@ -465,10 +387,10 @@ form {
     cursor: pointer;
     transition: background-color 300ms ease;
 }
-
 .button-container input[type="submit"]:hover {
     background-color: #FF1C04; 
 }
+
 /*POP-UP*/
 .fixed-banner {
     position: fixed;
@@ -501,7 +423,6 @@ form {
     font-weight: 600;
     color: white;
 }
-
 .greeting:hover {
     background-color: rgb(234, 255, 0);
 }
