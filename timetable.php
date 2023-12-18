@@ -115,7 +115,10 @@ $studentName = $_SESSION['Suname'];
         .title-container h1 {
             color: #333;
             font-size: 2rem;
-            margin-bottom: 20px;
+
+        }
+        .title-container h3 {
+            margin-top: 0.3rem;
         }
 
         table {
@@ -174,16 +177,16 @@ $studentName = $_SESSION['Suname'];
         /*User Information*/
         .greeting {
             position: fixed;
-            top: 140px; /* Adjust the top distance based on your navigation bar height */
+            top: 140px;
             right: 10px;
             background-color: #930000;
             color: rgb(255, 255, 255);
             padding: 10px;
-            border-radius: 0 0 5px 5px; /* Adjust border-radius for a ribbon effect */
+            border-radius: 0 0 5px 5px;
             font-size: 600;
             box-shadow: 0px 4px 8px rgba(112, 112, 112, 0.1);
             transition: background-color 0.3s ease;
-            z-index: 1000; /* Ensure the greeting is above other elements */
+            z-index: 1000;
         }
         .greeting p {
             font-weight: 600;
@@ -193,6 +196,20 @@ $studentName = $_SESSION['Suname'];
         .greeting:hover {
             background-color: rgb(234, 255, 0);
         }
+        footer {
+            height: 9vh;
+            margin: 0 1 rem;
+            background-color: black;
+
+        }
+
+        footer p {
+            text-align: center;
+            padding-top: 1rem;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+        }
+        
     </style>
 </head>
 <body>
@@ -229,25 +246,53 @@ $studentName = $_SESSION['Suname'];
         </div>
     </nav>
     <div class="greeting">
-        <p>Hello, <?php echo $studentName; ?>!</p>
+        <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
     <section id="timetable">
         <div class="title-container">
             <h1>Time Table</h1>
+            <h3>Odd Semesters : 2023 - 2024 </h3>
             <div class="timetable-box">
                 <table border="1">
                     <tr>
-                        <th>Year / Course</th>
+                        <th>Year & Semester / Course</th>
                         <th>BCA</th>
                         <th>BBA</th>
                         <th>B.COM</th>
                     </tr>
                     <tr>
-                        <td>Year - 1</td>
+                        <td>Year - 1 <Br> First Semster</td>
                         <td>
                             <div class="btn-container">
                                 <button class="btn btn-color-2" 
                                 onclick="window.open('./assets/Bcatimetable.pdf')">
+                                Click to Download
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-container">
+                                <button class="btn btn-color-2" 
+                                onclick="window.open('./assets/bca2timetable.pdf')">
+                                Click to Download
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-container">
+                                <button class="btn btn-color-2" 
+                                onclick="window.open('./assets/bca3timetable.pdf')">
+                                Click to Download
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Year - 2 <br> Third Semester</td>
+                        <td>
+                            <div class="btn-container">
+                                <button class="btn btn-color-2" 
+                                onclick="window.open('./assets/bca2timetable.pdf')">
                                 Click to Download
                                 </button>
                             </div>
@@ -270,11 +315,11 @@ $studentName = $_SESSION['Suname'];
                         </td>
                     </tr>
                     <tr>
-                        <td>Year - 2</td>
+                        <td>Year - 3 <br> Fifth Semester </td>
                         <td>
                             <div class="btn-container">
                                 <button class="btn btn-color-2" 
-                                onclick="window.open('./assets/Bcatimetable.pdf')">
+                                onclick="window.open('./assets/bca3timetable.pdf')">
                                 Click to Download
                                 </button>
                             </div>
@@ -282,7 +327,7 @@ $studentName = $_SESSION['Suname'];
                         <td>
                             <div class="btn-container">
                                 <button class="btn btn-color-2" 
-                                onclick="window.open('./assets/Bcatimetable.pdf')">
+                                onclick="window.open('./assets/bca2timetable.pdf')">
                                 Click to Download
                                 </button>
                             </div>
@@ -290,34 +335,7 @@ $studentName = $_SESSION['Suname'];
                         <td>
                             <div class="btn-container">
                                 <button class="btn btn-color-2" 
-                                onclick="window.open('./assets/Bcatimetable.pdf')">
-                                Click to Download
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Year - 3</td>
-                        <td>
-                            <div class="btn-container">
-                                <button class="btn btn-color-2" 
-                                onclick="window.open('./assets/Bcatimetable.pdf')">
-                                Click to Download
-                                </button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn-container">
-                                <button class="btn btn-color-2" 
-                                onclick="window.open('./assets/Bcatimetable.pdf')">
-                                Click to Download
-                                </button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn-container">
-                                <button class="btn btn-color-2" 
-                                onclick="window.open('./assets/Bcatimetable.pdf')">
+                                onclick="window.open('./assets/bca3timetable.pdf')">
                                 Click to Download
                                 </button>
                             </div>
@@ -332,5 +350,8 @@ $studentName = $_SESSION['Suname'];
             </div>
         </div>
     </section>
+    <footer>
+        <p>Copyright &#169 2023 Student's HelpDesk. All Rights Reserved</p>
+    </footer>
 </body>
 </html>

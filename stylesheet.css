@@ -46,6 +46,7 @@ a {
     font-weight: 500;
     font-weight: 600;
 }
+
 a:hover {
     color: rgb(48, 3, 3);
     text-decoration: underline;
@@ -426,3 +427,5 @@ form {
 .greeting:hover {
     background-color: rgb(234, 255, 0);
 }
+
+

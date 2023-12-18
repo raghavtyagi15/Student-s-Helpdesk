@@ -160,7 +160,7 @@ $studentName = $_SESSION['Suname'];
         }
         h1 {
             font-size: 3rem;
-            margin-top: 4rem;
+            margin-top: 1.5rem;
             text-align: center;
         }
         h2 {
@@ -181,7 +181,9 @@ $studentName = $_SESSION['Suname'];
             right: 10px;
             background-color: #930000;
             color: rgb(255, 255, 255);
-            padding: 6px;
+            padding: 5px;
+            padding-top: 2px;
+            padding-bottom: 2px;
             border-radius: 0 0 5px 5px; 
             font-size: 600;
             box-shadow: 0px 4px 8px rgba(112, 112, 112, 0.1);
@@ -195,6 +197,19 @@ $studentName = $_SESSION['Suname'];
 
         .greeting:hover {
             background-color: rgb(234, 255, 0);
+        }
+        footer {
+            height: 9vh;
+            margin: 0 1 rem;
+            background-color: black;
+
+        }
+
+        footer p {
+            text-align: center;
+            padding-top: 1rem;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
         }
     </style>
 </head>
@@ -232,7 +247,7 @@ $studentName = $_SESSION['Suname'];
         </div>
     </nav>
     <div class="greeting">
-        <p>Hello, <?php echo $studentName; ?>!</p>
+        <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
     <section id="Announcements">
         <div class="announcement-container">
@@ -243,13 +258,12 @@ $studentName = $_SESSION['Suname'];
             <?php
                 include "retrieve_announcement.php";
                 if ($result->num_rows > 0) {
-                    // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         $announcementID = $row["Id"];
                         $announcementTitle = $row["Title"];
                         echo '<marquee> <a href="announcement_details.php?id=' . $announcementID . '">';
                         echo $announcementTitle;
-                        echo '</a></marquee> <br>'; // Add a line break after each link
+                        echo '</a></marquee> <br>';
                     }
                 } else {
                     echo "0 results";
@@ -258,5 +272,9 @@ $studentName = $_SESSION['Suname'];
             </div>
         </div>
     </section>
+    <footer>
+
+        <p>Copyright &#169 2023 Student's HelpDesk. All Rights Reserved</p>
+    </footer>
 </body>
 </html>

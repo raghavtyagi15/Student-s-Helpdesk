@@ -218,18 +218,6 @@ $studentName = $_SESSION['Suname'];
     form {
         padding-bottom: 1.5rem;
     }
-
-    .form-container textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        background-color: #fff; 
-        color: #333; 
-        font-weight: 600;
-        border: 1px solid #ddd; 
-        border-radius: 5px;
-    }
-
     .form-container label {
         color: #333; 
         display: block;
@@ -237,9 +225,7 @@ $studentName = $_SESSION['Suname'];
     }
 
     .form-container input[type="text"],
-    .form-container input[type="number"],
-    .form-container input[type="date"],
-    .form-container input[type="file"] {
+    .form-container input[type="number"] {
         width: 100%;
         padding: 10px;
         margin-bottom: 10px;
@@ -249,20 +235,11 @@ $studentName = $_SESSION['Suname'];
         border: 1px solid #ddd; 
         border-radius: 5px;
     }
-
-    .form-container input[type="checkbox"] {
-        margin-right: 5px;
-        transform: scale(1.3); 
-    }
-    
-    .form-container input[type="checkbox"]:hover {
-        filter: brightness(1.5); 
-        cursor: pointer; 
+    .form-container input[type="text"]:hover,
+    .form-container input[type="number"]:hover {
+        border: 1px solid rgb(234, 255, 0);
     }
 
-    .form-container input[type="file"] {
-        border: none;
-    }
 
     .button-container input[type="submit"] {
         background-color: rgb(234, 255, 0); 
@@ -270,7 +247,7 @@ $studentName = $_SESSION['Suname'];
         margin-top: 1.5rem;
         padding: 1rem;
         border: none;
-        
+        width: 102%;
         font-weight: 600;
         border-radius: 10px;
         cursor: pointer;
@@ -381,7 +358,7 @@ $studentName = $_SESSION['Suname'];
     </nav>
 
     <div class="greeting">
-        <p>Hello, <?php echo $studentName; ?>!</p>
+        <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
     <section id="Scholarships">
         <div class="scholarships-title">

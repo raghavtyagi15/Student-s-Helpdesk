@@ -53,7 +53,7 @@ $studentName = $_SESSION['Suname'];
         </div>
     </nav>
     <div class="greeting">
-        <p>Hello, <?php echo $studentName; ?>!</p>
+        <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
     <section id="Home">
         <div class="section__pic-container">
@@ -153,7 +153,7 @@ $studentName = $_SESSION['Suname'];
                     <li><a href="#Corner">Student's Corner</a></li>
                     <li><a href="#Enrichment">Enrichment</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="login.html" >Log-in</a></li>
+                    <li><a href="logout.php" >Log-out</a></li>
                 </ul> 
             </div>
         </nav>

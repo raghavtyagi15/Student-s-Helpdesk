@@ -52,7 +52,7 @@ $studentName = $_SESSION['Suname'];
     </nav>
 
     <div class="greeting">
-        <p>Hello, <?php echo $studentName; ?>!</p>
+        <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
     
     <section id="corner-container">
@@ -94,3 +94,5 @@ $studentName = $_SESSION['Suname'];
             </div>
         </div>
     </section>
+</body>
+</html>

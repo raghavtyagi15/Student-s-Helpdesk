@@ -148,7 +148,7 @@ $studentName = $_SESSION['Suname'];
             margin-right: 10px;
         }
         footer {
-            height: 26vh;
+            height: 9vh;
             margin: 0 1 rem;
             background-color: black;
 
@@ -253,7 +253,7 @@ $studentName = $_SESSION['Suname'];
         </div>
     </nav>
     <div class="greeting">
-        <p>Hello, <?php echo $studentName; ?>!</p>
+        <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
     <section id="Academics">
             <div class="Academics-title">
@@ -296,14 +296,8 @@ $studentName = $_SESSION['Suname'];
         </div>
     </section>
     <footer>
-        <nav>
-            <div class="nav-links-container">
-                <ul class="nav-links">
-                    <li><a>Student's HelpDesk System</a></li>
-                </ul> 
-            </div>
-        </nav>
-        <p>Copyright &#169 2023 Raghav Tyagi. All Rights Reserved</p>
+
+        <p>Copyright &#169 2023 Student's HelpDesk. All Rights Reserved</p>
     </footer>
 </body>
 </html>

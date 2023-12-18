@@ -16,8 +16,6 @@ if(isset($_GET['id'])) {
     die();
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -269,6 +267,7 @@ if(isset($_GET['id'])) {
                         <a href="manage_announcements.php">Manage Announcements</a>
                     </div>
                 </li>
+                <a href="admin.php" class="dropbtn">Home</a>
                 <a href="admin_logout.php" class="dropbtn">Log-out</a>
             </ul>
         </div>

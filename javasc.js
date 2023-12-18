@@ -9,9 +9,9 @@ function checkEligibility() {
     // check eligibility
     let eligibilityResult = '';
     if (grade >= 90 && annualIncome < 250000) {
-        eligibilityResult = `Congratulations ${firstName} ${lastName}! You are eligible for the scholarship.`;
+        eligibilityResult = `<span style="color: green;">Congratulations ${firstName} ${lastName}! You are eligible for the scholarship.</span>`;
     } else {
-        eligibilityResult = `Sorry ${firstName} ${lastName}, you are not eligible for the scholarship.`;
+        eligibilityResult = `<spanstyle="color: red;">Sorry ${firstName} ${lastName}, you are not eligible for the scholarship.</span>`;
     }
 
     // Display result
@@ -24,4 +24,5 @@ function checkEligibility() {
 function goToAdminLogin() {
     window.location.href = 'admin_login.html';
 }
+
 

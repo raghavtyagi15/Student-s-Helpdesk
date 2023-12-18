@@ -1,52 +1,62 @@
 <?php
-include "student_function.php"; 
+include "connection.php";
 
-if (!SLoggedIn()) {
-    header("Location: index.html");
+session_start();
+
+if (!isset($_SESSION['Suname'])) {
+    header('Location: login.html');
     exit();
 }
-
 $studentName = $_SESSION['Suname'];
+
+$enrol = $_SESSION['Senrol'];
+
+$sql_query_medical = "SELECT Fname,Lname, SubmissionDate FROM medical WHERE enrol='" . $enrol . "'";
+$result_medical = mysqli_query($conn, $sql_query_medical);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <title>Announcements</title>
+    <title>Application Tracking</title>
     <style>
+        /* GENERAL */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
         *{
             margin: 0;
             padding: 0;
         }
+        /*SECTION*/
+        section {
+            padding-top: 4vh;
+            height: 96vh;
+            margin: 0 10rem;
+            box-sizing: border-box;
+            min-height: fit-content;
 
+        }
         body {
             font-family: 'Poppins', sans-serif;
-            
+            background-color: rgb(255, 255, 255);
+            margin-bottom: 4rem;
         }
         html {
             scroll-behavior: smooth;
+        }
+        p {
+            color: rgb(85, 85, 85
+            );
         }
 
         /*TRANSITIONS*/
         a, .btn {
             transition: all 300ms ease;
-
-        }
-        h1 {
-            font-size: 3rem;
-            margin-top: 6rem;
-            text-align: center;
-        }
-        h2 {
-            font-size: 1.5rem;
-            text-align: center;
-            color: rgb(234, 255, 0);
         }
 
-        /* NAV */
+        /*NAV*/
         nav, .nav-links {
             display: flex;
             background-color: rgb(234, 255, 0);
@@ -71,11 +81,41 @@ $studentName = $_SESSION['Suname'];
             font-weight: 500;
             font-weight: 600;
         }
+        .login-link {
+            color: rgb(17, 0, 128); /* Your desired color */
+            font-weight: bold; /* Your desired font weight */
+            /* Add any other styles as needed */
+        }
+
         a:hover {
             color: rgb(48, 3, 3);
             text-decoration: underline;
             text-underline-offset: 1rem;
             text-decoration-color: rgb(255, 255, 255);
+        }
+        /*DROP-DOWN MENU*/
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(255, 255, 255);
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+        }
+        .dropdown-content a {
+            color: rgb(0, 0, 0);
+        }
+        .dropdown-content a:hover {
+            color: rgb(234, 255, 0);
         }
         .logo {
             font-size: 2rem;
@@ -85,93 +125,100 @@ $studentName = $_SESSION['Suname'];
         }
         .logo:hover {
             cursor: default;
-            transform: scale(1.1);      
+            transform: scale(1.1);
         }
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: rgb(255, 255, 255);
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 10px;
-        }
-
-        .dropdown-content a {
-            color: black;
-        }
-
-        .dropdown-content a:hover {
-            color: rgb(234, 255, 3);
-        }
-
-        #Announcements {
-            padding: 5rem;
-            text-align: center;
-        }
-        .Announcement_details {
-            border: 2px solid rgb(234, 255, 0);
-            padding: 5rem;
-            margin: 0 auto;
-            width: 65%;
-            margin: 2rem auto;
-            border-radius: 10px;
-            transition: border-color 0.3s ease;
-        }
-
-        .Announcement_details:hover {
+        #ragging-complaints {
+            margin: 1rem auto;
+            padding: 4rem 5rem;
             
-            border-color: red;
-            background-color: #FAFAFA;
         }
 
-        h3 {
-            color: #333;
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 0;
+            
+        }
+
+        h1, h2 {
+            font-size: 3rem;
+            margin-top: 3rem;
+            color: white;
+            text-align: center;
+            color: black;
+            font-weight: 900;
         }
 
         p {
-            color: #666;
-            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: gray;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            
         }
-        /*User Information*/
+        /*USER INFORMATION RIBBON*/
         .greeting {
             position: fixed;
-            top: 140px; /* Adjust the top distance based on your navigation bar height */
+            top: 136px; 
             right: 10px;
             background-color: #930000;
             color: rgb(255, 255, 255);
             padding: 8px;
-            padding-top: 0px;
-            border-radius: 0 0 5px 5px; /* Adjust border-radius for a ribbon effect */
+            padding-bottom: 4px;
+            border-radius: 0 0 5px 5px; 
             font-size: 600;
             box-shadow: 0px 4px 8px rgba(112, 112, 112, 0.1);
             transition: background-color 0.3s ease;
-            z-index: 1000; /* Ensure the greeting is above other elements */
+            z-index: 1000; 
         }
         .greeting p {
             font-weight: 600;
             color: white;
         }
-
         .greeting:hover {
             background-color: rgb(234, 255, 0);
         }
+        .sub-nav {
+            background-color: black;
+            text-align: center;
+        }
+
+        .sub-nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            text-decoration: none;
+            color: black;
+            background-color: rgb(234, 255, 0);
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sub-nav-button:hover {
+            background-color: #ccc;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            text-align: center;
+            font-weight: 600;
+            padding: 1rem;
+        }
+        footer p {
+            color: whitesmoke;
+        }
+
     </style>
 </head>
 <body>
-    <nav id="desktop-nav">
+<nav id="desktop-nav">
         <div class="logo">Student's HelpDesk</div>
         <div>
             <ul class="nav-links">
@@ -199,59 +246,27 @@ $studentName = $_SESSION['Suname'];
                         <a href="sports.php">Sports Engagement</a>
                     </div>
                 </li>
-                <li><a href="logout.php">Log-out</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
+    <div class="sub-nav">
+        <a href="track_medical_application.php" class="sub-nav-button">Medical Applications</a>
+        <a href="track_ragging_complaint.php" class="sub-nav-button">Ragging Complaints</a>
+    </div>
     <div class="greeting">
         <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
-    <div class="title">
-        <h1>Updates & Notifications</h1>
-        <h2>Via. Student HelpDesk</h2>
-    </div>
-    <div class="Announcement_details">
-    <?php
-        include "retrieve_announcement.php";
-
-        if (isset($_GET['id'])) {
-            $announcementID = $_GET['id'];
-
-            // Fetch the details of the selected announcement
-            $sql = "SELECT * FROM announcements WHERE Id = $announcementID";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $announcementTitle = $row["Title"];
-                $announcementDescription = $row["Description"];
-                $postingDate = $row["Created"];
-                $externalLink = $row["ExternalLink"];
-                $pdfFile = $row["PdfFile"];
-
-                // Display the details
-                echo "<h3>$announcementTitle</h3>";
-                echo "<p><strong>Posting Date:</strong> $postingDate</p>";
-                echo "<p>$announcementDescription</p>";
-
-                // Display External Link if available
-                if (!empty($externalLink)) {
-                    echo "<p><strong>External Link:</strong> <a href='$externalLink' target='_blank'>$externalLink</a></p>";
-                }
-
-                // Display PDF File if available
-                if (!empty($pdfFile)) {
-                    echo "<p><strong>PDF File:</strong> <a href='assets/$pdfFile' target='_blank'>$pdfFile</a></p>";
-                }
-            } else {
-                echo "Announcement not found.";
-            }
-        } else {
-            echo "Invalid request.";
-        }
-
-        $conn->close();
-        ?>
-    </div>
+    <section id="ragging-complaints">
+        </div>
+        <div class="title-container">
+            <h1>Complaint & Application Tracking</h1>
+            <p>Our application tracking feature is designed to keep you informed and engaged throughout your application process. <br>As a student, you now have the ability to track the status of your submitted applications effortlessly.</p>
+            <p>Stay connected, stay informed. Embrace the power of tracking your medical applications and ragging complaints effortlessly. <br> Your journey is important to us, and with our tracking feature, you're in control every step of the way.</p>
+        </section>
+    <footer>
+        <p>Copyright &#169 2023 Student HelpDesk. All Rights Reserved</p>
+    </footer>
 </body>
+
 </html>

@@ -145,6 +145,7 @@ $studentName = $_SESSION['Suname'];
 
         article {
             background-color: #fff; 
+            width: 100%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
@@ -162,7 +163,7 @@ $studentName = $_SESSION['Suname'];
         }
 
         article h2 {
-            color: rgb(234, 255, 0);
+            color: darkred;
             font-size: 2rem;
             margin-top: 1rem;
         }
@@ -172,6 +173,7 @@ $studentName = $_SESSION['Suname'];
             font-size: 1em;
             color: #737373;
             text-wrap: wrap; 
+            font-weight: 600;
         }
         #corner-container {
             padding-top: 5rem;
@@ -246,6 +248,34 @@ $studentName = $_SESSION['Suname'];
             border-radius: 5px;
             margin-left: 4rem;
             
+        }
+        .form-container select {
+            width: 81.5vw;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            color: #333; 
+            font-weight: 600;
+            border: 1px solid #ddd; 
+            border-radius: 5px;
+            margin-left: 4rem;
+        }
+        .form-container select::after {
+            content: '\25BC '; 
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            pointer-events: none;
+        }
+        .form-container select::-ms-expand {
+            display: none;
+        }
+        .form-container select option {
+            background-color: white;
+            color: black;
+            font-weight: 600;
         }
         
         .form-container input[type="checkbox"] {
@@ -354,7 +384,7 @@ $studentName = $_SESSION['Suname'];
         </div>
     </nav>
     <div class="greeting">
-        <p>Hello, <?php echo $studentName; ?>!</p>
+        <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
     <section id="society">
         <div class="society-title-container">
@@ -369,20 +399,27 @@ $studentName = $_SESSION['Suname'];
         </div>
         <div class="article-container">
             <article>
-                <h2>Palette Pulse : Uniting Artistry with Every Stroke</h2>
-                <img src="./assets/art.png" alt="Art-Society" class="icon">
-                <p>Diverse talents converge to create a symphony of colors, forms, and emotions. Unleash your creativity, connect with like-minded enthusiasts, and let the canvas become a portal to boundless imagination.</p>
+                <h2>WebMinds Alliance</h2>
+                <img src="./assets/webdev.png" alt="Web Devlopment Society" class="icon">
+                <p>Welcome to WebMinds Alliance, where the precise architecture of web development takes center stage. Aspiring coders and developers unite under our banner <br> of precision and innovation. Join us in delving into the technical depths of the digital realm, collectively sculpting the evolving landscape of web development.</p>
+            </article>
+            <article>
+                <h2>Logic Legends</h2>
+                <img src="./assets/coding.png" alt="Art-Society" class="icon">
+                <p> Your gateway to precision in programming. Join our community as we explore algorithms, data structures, and <br> the technical facets of coding. Together, we navigate the complexities of logic, honing our skills for excellence in the code-driven landscape.</p>
             </article>
             <article>
                 <h2>ActMinds Ensemble</h2>
                 <img src="./assets/drama.png" alt="Drama-Society" class="icon">
-                <p>Where stories come alive on stage. Join us in exploring the art of expression, connecting through compelling narratives, and creating unforgettable moments under the spotlight.</p>
+                <p>Where stories come alive on stage. Join us in exploring the art of expression, connecting through compelling narratives, and <br>creating unforgettable moments under the spotlight.</p>
             </article>
             <article>
-                <h2>Desi Drapes</h2>
-                <img src="./assets/fashion.png" alt="Fashion-Society" class="icon">
-                <p>Where every fold tells a story of tradition and every thread weaves a tale of cultural splendor. Join us in the vibrant fabric of Indian fashion, embracing the timeless allure of ethnic elegance and contemporary charm.</p>
+            <h2>Palette Pulse : Uniting Artistry with Every Stroke</h2>
+                <img src="./assets/art.png" alt="Art-Society" class="icon">
+                <p>Diverse talents converge to create a symphony of colors, forms, and emotions. <br>Unleash your creativity, connect with like-minded enthusiasts, and let the canvas become a portal to boundless imagination.</p>
             </article>
+            
+                
         </div>
     </section>
     <section id="corner-container">
@@ -402,13 +439,18 @@ $studentName = $_SESSION['Suname'];
                             ?>
                             <input type="text" placeholder="First Name " name="Fname" required>
                             <input type="text" placeholder="Last Name " name="Lname" required>
-                            <input type="text" placeholder="Enrolment Number " name="Enrol" pattern="[0-9]{10}"required>
+                            <input type="text" placeholder="Enrolment Number " name="Enrol" pattern="[0-9]{11}"required>
 
                             <input type="text" placeholder="Course " name="Course" required>
                             <input type="number" placeholder="Semester " name="Sem" required>
-                            <input type="text" placeholder="Society Preference " name="Psociety" required>
-                                
-                            <textarea name="Idescription" rows="5" cols="5">Describe yourself, your Passion & Achievements</textarea>
+                            <select name="Psociety" required>
+                                <option value="" disabled selected hidden>Society Preference</option>
+                                <option value="WebMinds Alliance">WebMinds Alliance - Web Devlopment Society</option>
+                                <option value="Logic Legends">Logical Legends - Coding Society</option>
+                                <option value="ActMinds Ensemble">ActMinds Ensemble - Drama Society</option>
+                                <option value="Palette Pulse">Palette Pulse - Art Society</option>
+                            </select>
+                            <textarea name="Idescription" rows="5" cols="5" placeholder="Describe yourself, your Passion & Achievements"></textarea>
                             <label for="date">Prefered Audition Dates:</label>
                             <input type="date" id="Padate" name="Padate">
                             <label for="Proof" class="custom-file-input">Upload your Picture / Portfolio :</label>

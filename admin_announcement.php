@@ -149,6 +149,18 @@ if (!isLoggedIn()) {
             border-radius: 5px;
             
         }
+        .form-container input[type="file"] {
+            width: 50%;
+            display: block;
+            padding: 10px;
+            margin: 0rem auto; /* Center the input horizontally */
+            margin-bottom: 10px;
+            background-color: black;
+            color: white;
+            font-weight: 600;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
         .button-container input[type="submit"] {
             background-color: rgb(234, 255, 0); /* Green color */
             color: black;
@@ -208,6 +220,7 @@ if (!isLoggedIn()) {
                         <a href="manage_announcements.php">Manage Announcements</a>
                     </div>
                 </li>
+                <a href="admin.php" class="dropbtn">Home</a>
                 <a href="admin_logout.php" class="dropbtn">Log-out</a>
             </ul>
         </div>
@@ -225,6 +238,8 @@ if (!isLoggedIn()) {
                     ?>  
                     <input type="text" placeholder="Add Title " name="Title" required>
                     <input type="text" placeholder="Add an Announcement " name="Description" class="Ann-container" required>
+                    <input type="text" placeholder="External Link (if any)" name="ExternalLink">
+                    <input type="file" accept=".pdf" name="PdfFile" id="pdfFileInput">  
                     <div class="button-container">
                         <input type="submit" value="Submit" class="btn" name="send">
                    </div> 

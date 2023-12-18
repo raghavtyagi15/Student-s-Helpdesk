@@ -292,6 +292,19 @@ $studentName = $_SESSION['Suname'];
         .greeting:hover {
             background-color: rgb(234, 255, 0);
         }
+        footer {
+            height: 9vh;
+            margin: 0 1 rem;
+            background-color: black;
+
+        }
+
+        footer p {
+            text-align: center;
+            padding-top: 1rem;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+        }
         
     </style>
 </head>
@@ -329,7 +342,7 @@ $studentName = $_SESSION['Suname'];
         </div>
     </nav>
     <div class="greeting">
-        <p>Hello, <?php echo $studentName; ?>!</p>
+        <a href="track_application.php"><p>Hello, <?php echo $studentName; ?>!</p></a>
     </div>
     <section id="sports-container">
         <div class="Sports-article">
@@ -365,7 +378,7 @@ $studentName = $_SESSION['Suname'];
                 ?>    
                 <input type="text" placeholder="First Name " name="Fname" required>
                 <input type="text" placeholder="Last Name " name="Lname" required>
-                <input type="text" placeholder="Enrolment Number " name="Enrol" pattern="[0-9]{10}"required>
+                <input type="text" placeholder="Enrolment Number " name="Enrol" pattern="[0-9]{11}"required>
                 <input type="text" placeholder="Course " name="Course" required>
                 <input type="number" placeholder="Semester " name="Sem" required>
                 <input type="text" placeholder="Prefered Sports" name="Psports" required>  
@@ -381,5 +394,8 @@ $studentName = $_SESSION['Suname'];
             </form>
         </div>
     </section>
+    <footer>
+        <p>Copyright &#169 2023 Raghav Tyagi. All Rights Reserved</p>
+    </footer>
 </body>
 </html>

@@ -140,9 +140,9 @@ if (isset($_GET['Id'])) {
 
         }
         table {
-            
             border-collapse: collapse;
             width: 100%;
+            border-radius: 20px;
         }
 
         th, td {
@@ -228,6 +228,7 @@ if (isset($_GET['Id'])) {
                         <a href="manage_announcements.php">Manage Announcements</a>
                     </div>
                 </li>
+                <a href="admin.php" class="dropbtn">Home</a>
                 <a href="admin_logout.php" class="dropbtn">Log-out</a>
             </ul>
         </div>
